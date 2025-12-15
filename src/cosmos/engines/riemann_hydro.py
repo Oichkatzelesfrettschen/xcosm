@@ -24,12 +24,16 @@ import matplotlib.pyplot as plt
 import numpy as np
 from numpy.typing import NDArray
 
-# Import Equation of State
-from cosmos.models.helmholtz_eos import (
-    HelmholtzEOS,
-    compute_pressure,
-    compute_sound_speed
-)
+# Import Equation of State (optional - fall back to polytropic if unavailable)
+try:
+    from cosmos.models.helmholtz_eos import (
+        helmholtz_eos,
+        temperature_from_pressure,
+        EOSResult,
+    )
+    HELMHOLTZ_AVAILABLE = True
+except ImportError:
+    HELMHOLTZ_AVAILABLE = False
 
 # --- Physical and Numerical Constants ---
 # Equation of State (fallback polytropic)

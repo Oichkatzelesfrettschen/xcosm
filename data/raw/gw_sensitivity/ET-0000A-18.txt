@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>ET Docs</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-store" />
+<link rel="shortcut icon" href="resources/docs.ico?v=5">
+<link rel="stylesheet" href="css/docs.css?v=6">
+<link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.css">
+<link rel="stylesheet" href="css/jquery-ui.css">
+<script type="text/javascript" src="scripts/jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="scripts/jquery/jquery-ui-1.12.1.js"></script>
+<script type="text/javascript" src="scripts/jquery/jquery.validate.min.js"></script>
+<script type="text/javascript" src="scripts/jquery/jquery.form.min.js"></script>
+<script type="text/javascript" src="scripts/docs_aut.js"></script>
+<script type="text/javascript" src="scripts/timepicker.js"></script>
+<script type="text/javascript" src="scripts/zingchart/zingchart.min.js"></script>
+<body>
+<!--  Sign-in container. -->
+<div id="sign-in-container" class="w3-modal w3-show">
+	<div class="w3-modal-content w3-animate-top w3-card-8">
+		<header class="w3-container w3-signal-blue">
+			<h2>ET Docs sign-in</h2>
+		</header>
+		<div class="w3-container" id="sign-in-container">
+		<form class="w3-container padding-bottom" name="frm_login" id="frm_login" method="post">
+			<p id="sign-in-msg" class="w3-text">Enter your user details:</p>
+			<p>
+				<label class="w3-label w3-text-deep-green">Username</label>
+				<input class="w3-input w3-border w3-light-grey" type="text" name="input_login_username" value="" autofocus required>
+			</p>
+			<p>
+				<label class="w3-label w3-text-deep-green">Password</label>
+				<input class="w3-input w3-border w3-light-grey" type="password" name="input_login_password" value="" required>
+			</p>
+			<p>
+			<div id="sign_in_options" class="w3-container w3-padding-0 w3-margin-0 w3-margin-bottom">
+			    <div id="btn_sign_in" class="w3-btn w3-blue-grey cursor" onclick="signing_in(0, 0, 14446, 0)" type="submit">Sign-in</div>
+			</div>
+		</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║           PANTHEON+ HUBBLE BIFURCATION ANALYSIS - QUICK RESULTS              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+HYPOTHESIS: H₀ varies with x₁ stretch parameter (Spandrel Metric bifurcation)
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ PREDICTED vs OBSERVED (z ≤ 0.1)                                              │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                          PREDICTED         OBSERVED       DIFFERENCE          │
+│ H₀ (LOW-D, x₁<0):       75.27 km/s/Mpc    71.66 ± 7.11   -3.61 km/s/Mpc     │
+│ H₀ (HIGH-D, x₁>0):      71.25 km/s/Mpc    71.32 ± 6.40   +0.07 km/s/Mpc     │
+│ ΔH₀:                    4.00 km/s/Mpc     0.34 km/s/Mpc  -3.66 km/s/Mpc     │
+│ Statistical Sig:        Expected          p = 0.497       NOT SIGNIFICANT    │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ SAMPLE SIZES                                                                 │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ Total Pantheon+ SNe:              1701                                       │
+│ Low-z sample (z ≤ 0.1):           741                                        │
+│   └─ LOW-D (x₁ < 0):              428 (57.8%)                               │
+│   └─ HIGH-D (x₁ > 0):             313 (42.2%)                               │
+│ Full sample:                      1701                                       │
+│   └─ LOW-D (x₁ < 0):              823 (48.4%)                               │
+│   └─ HIGH-D (x₁ > 0):             878 (51.6%)                               │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ REDSHIFT-BINNED ΔH₀                                                          │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ z Range       ΔH₀ (km/s/Mpc)    N(LOW-D)    N(HIGH-D)    Notable?           │
+│ 0.01-0.02     -1.95             109         45                              │
+│ 0.02-0.03     +0.92             104         99                              │
+│ 0.03-0.05     -0.14             100         77                              │
+│ 0.05-0.07     -0.10              28         24                              │
+│ 0.07-0.10     +3.52 ⭐           22         22           CLOSE TO PREDICTED! │
+│ 0.10-0.15     +0.97              32         53                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ BOTTOM LINE                                                                  │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ ✗ Overall hypothesis NOT supported                                          │
+│ ✗ Observed ΔH₀ is ~12× smaller than predicted                              │
+│ ✗ Effect is not statistically significant (p = 0.50)                        │
+│ ⚠ One redshift bin (0.07-0.10) shows ΔH₀ ≈ 3.5 km/s/Mpc (near prediction)  │
+│ ⚠ Small sample size (N=22 each) makes this inconclusive                    │
+│ ℹ SALT3 standardization may already remove x₁-dependent effects             │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ DATA FILES                                                                   │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ pantheon_low_d_population.csv      - Low-z (≤0.1), x₁ < 0 (428 SNe + H₀)   │
+│ pantheon_high_d_population.csv     - Low-z (≤0.1), x₁ > 0 (313 SNe + H₀)   │
+│ pantheon_all_low_d.csv             - All z, x₁ < 0 (823 SNe)               │
+│ pantheon_all_high_d.csv            - All z, x₁ > 0 (878 SNe)               │
+│ pantheon_bifurcation_plots.png     - Diagnostic plots                       │
+│ PANTHEON_BIFURCATION_RESULTS.md    - Full technical report                  │
+│ pantheon_summary.txt               - Detailed summary                        │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+Generated: 2025-11-28
+Source: Pantheon+ (Brout et al. 2022, ApJ 938, 110)
+Data: https://github.com/PantheonPlusSH0ES/DataRelease

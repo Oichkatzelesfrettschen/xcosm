@@ -1,0 +1,65 @@
+Object,Mass_Msun,Mass_Uncertainty,Core_Type,Teff_K,logg,Distance_pc,N_Modes,Period_Min_s,Period_Max_s,Period_Mean_s,Delta_Pi_s,Crystallized_Percent,H_Layer_log,Rotation_days,Reference
+WDJ181058.67+311940.94,1.555,0.044,Unknown,Unknown,Unknown,49,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Munday2025_NatAst
+J0959-1828,1.320,0.004,CO,11500,9.35,Unknown,6,201.0,1013,437,Unknown,Unknown,Unknown,Unknown,arXiv:2510.09802
+J0959-1828_alt,1.270,0.004,ONe,11500,9.35,Unknown,6,201.0,1013,437,Unknown,Unknown,Unknown,Unknown,arXiv:2510.09802
+WD_J004917.14-252556.81,1.290,0.01,ONe,13020,9.34,99.8,13,170,258,214,Unknown,99,<-7.5,0.3-0.67,Caliskan2025_arXiv2505
+WD_J004917.14-252556.81_initial,1.310,0.01,CO,13020,9.34,99.8,2,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Kanaan2023_MNRAS522
+WD_J004917.14-252556.81_initial_alt,1.260,0.01,ONe,13020,9.34,99.8,2,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Kanaan2023_MNRAS522
+WD_J0135+5722,1.135,0.01,CO,12000,9.2,Unknown,19,137,1345,741,Unknown,Partial,Unknown,Unknown,DeGeronimo2025_ApJL980
+WD_J0135+5722_alt,1.118,0.01,ONe,12000,9.2,Unknown,19,137,1345,741,Unknown,Partial,Unknown,Unknown,DeGeronimo2025_ApJL980
+BPM_37093,1.100,0.03,ONe,11500,9.0,Unknown,8,510,660,585,17.6,92,Unknown,Unknown,Kanaan2005_AA432
+GD_518,1.240,0.02,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,97,Unknown,Unknown,Corsico2019_AA
+SDSS_J0840+5222,1.160,0.02,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,81,Unknown,Unknown,Corsico2019_AA
+WD_J212402.03,1.160,0.02,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Survey
+WD_J0204+8713,1.050,0.02,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Survey
+
+# Individual Pulsation Modes (detailed where available)
+
+# J0959-1828 Individual Modes
+# Object,Mode_Number,Period_s,Frequency_cpd,Amplitude_mma,Band,Instrument
+J0959-1828,1,1013,85.3,2.3,Unknown,Discovery
+J0959-1828,2,942,91.7,1.8,Unknown,Discovery
+J0959-1828,3,215.4,401.2,7.4,Unknown,APO
+J0959-1828,4,214.8,402.4,Unknown,Unknown,ULTRACAM
+J0959-1828,5,213.7,404.5,1.3,g-band,GTC
+J0959-1828,5,213.7,404.5,5.5,u-band,GTC
+J0959-1828,6,201.0,430.2,Unknown,Unknown,GTC
+
+# WD J004917.14-252556.81 Individual Modes
+# Period range: 170-258 s (13 modes total, specific values not provided in search results)
+
+# WD J0135+5722 Individual Modes
+# Period range: 137-1345 s (19 modes total, specific values not provided in search results)
+
+# BPM 37093 Individual Modes
+# Period range: 510-660 s (8 modes, specific values require original WET paper Tables 1,3,5,7)
+
+# Period Ratios for Spandrel Framework
+
+# Object,Ratio_Type,Value,Comment
+J0959-1828,P1/P2,1.075,Long period modes
+J0959-1828,P1/P3,4.70,Long vs short
+J0959-1828,P5/P6,1.063,Short period modes
+WD_J0135+5722,P_max/P_min,9.82,Huge dynamic range
+BPM_37093,Delta_Pi_l2,17.6,Quadrupole spacing
+
+# ZZ Ceti Instability Strip Boundaries
+# Property,Value_Min,Value_Max,Unit
+Teff_ZZCeti,10500,12300,K
+Teff_ZZCeti_extended,10500,13500,K
+logg_ZZCeti,7.5,9.35,cgs
+Period_ZZCeti,70,1500,s
+Period_typical,100,1400,s
+
+# DBV (V777 Her) Properties
+# Property,Value_Min,Value_Max,Unit
+Teff_DBV,22000,29000,K
+Period_DBV,100,1400,s
+Known_DBV,47,47,objects
+
+# Theoretical Scaling Relations
+# Relation,Description
+# Delta_Pi ~ M^(-1/2),Period spacing decreases with mass
+# P_mean ~ M^(-1),Mean period decreases with mass
+# P_mean ~ Teff^(-1),Mean period increases as star cools
+# Delta_Pi ~ MH^(+),Period spacing increases for thinner H envelope

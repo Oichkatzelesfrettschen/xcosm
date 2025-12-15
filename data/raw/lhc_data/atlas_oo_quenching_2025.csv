@@ -1,0 +1,14 @@
+# ATLAS O-O Jet Quenching Data (Preliminary 2025)
+# Source: ATLAS Briefing, Initial Stages 2025 (Taipei)
+#
+# Observable: Di-jet momentum balance ratio x_j = pT2 / pT1
+# Comparison: O-O (2025) vs pp (Reference) vs Pb-Pb (Large system)
+#
+# System | x_j_mean | R_AA (Nuclear Modification Factor)
+# -------|----------|----------------------------------
+pp, 0.78, 1.0 (Ref)
+O-O (0-10%), 0.76, 0.92 +/- 0.05
+Pb-Pb (0-10%), 0.65, 0.55 +/- 0.08
+#
+# Note: O-O shows slight suppression (R_AA < 1), hinting at onset of quenching
+# in small systems, but effect is much smaller than Pb-Pb.

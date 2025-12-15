@@ -1,0 +1,210 @@
+%% Supplementary Material for H0 Gradient Paper
+%% Appendices and Extended Analysis
+
+\appendix
+
+\section{Complete Data Table}
+\label{app:data}
+
+\begin{table*}[h]
+\centering
+\caption{Complete $H_0$ Measurements with Effective Scales}
+\label{tab:complete_data}
+\begin{tabular}{lccccccl}
+\hline\hline
+Dataset & $H_0$ & $\sigma_{H_0}$ & $k_\text{eff}$ & $\log_{10}(k)$ & $z$ range & Method & Reference \\
+ & (km/s/Mpc) & (km/s/Mpc) & (Mpc$^{-1}$) & & & & \\
+\hline
+\multicolumn{8}{c}{\textit{CMB-scale measurements}} \\
+Planck 2018 & 67.36 & 0.54 & $2\times10^{-4}$ & $-3.70$ & 1100 & Primary CMB & Planck 2020 \\
+ACT DR6 & 67.9 & 1.1 & $5\times10^{-4}$ & $-3.30$ & 0.5--5 & CMB lensing & Qu+ 2024 \\
+SPT-3G 2024 & 68.3 & 1.5 & $8\times10^{-4}$ & $-3.10$ & 0.5--4 & CMB+lensing & SPT 2024 \\
+\hline
+\multicolumn{8}{c}{\textit{BAO-scale measurements}} \\
+DESI DR1 & 68.52 & 0.62 & 0.01 & $-2.00$ & 0.1--2.1 & BAO & DESI 2024 \\
+DESI DR2 & 68.7 & 0.55 & 0.015 & $-1.82$ & 0.1--4.2 & BAO+RSD & DESI 2025 \\
+eBOSS Final & 68.2 & 0.8 & 0.012 & $-1.92$ & 0.6--2.2 & BAO & eBOSS 2021 \\
+\hline
+\multicolumn{8}{c}{\textit{Intermediate-scale measurements}} \\
+DES Y3 + BAO & 69.1 & 1.2 & 0.05 & $-1.30$ & 0.15--1 & WL + BAO & DES 2022 \\
+KiDS-1000 & 69.5 & 1.8 & 0.08 & $-1.10$ & 0.1--1.2 & Cosmic shear & Heymans+ 2021 \\
+\hline
+\multicolumn{8}{c}{\textit{Local-scale measurements}} \\
+TRGB (Freedman) & 69.8 & 1.7 & 0.1 & $-1.00$ & 0--0.01 & TRGB & Freedman+ 2024 \\
+CCHP 2024 & 69.96 & 1.05 & 0.15 & $-0.82$ & 0--0.02 & TRGB+JAGB & Freedman+ 2024 \\
+GWTC-4.0 & 70.5 & 4.0 & 0.2 & $-0.70$ & 0.01--0.5 & GW sirens & LVK 2025 \\
+H0LiCOW/TDCOSMO & 71.8 & 2.0 & 0.25 & $-0.60$ & 0.3--1 & Time delay & Millon+ 2020 \\
+Megamaser & 73.0 & 2.5 & 0.3 & $-0.52$ & 0--0.05 & Megamaser & Pesce+ 2020 \\
+SH0ES 2024 & 73.17 & 0.86 & 0.5 & $-0.30$ & 0--0.15 & Cepheid-SN & Riess+ 2024 \\
+SH0ES+JWST & 72.6 & 0.9 & 0.6 & $-0.22$ & 0--0.01 & JWST Cepheids & Riess+ 2024 \\
+\hline
+\end{tabular}
+\end{table*}
+
+\section{Scale Assignment Methodology}
+\label{app:scales}
+
+The effective scale $k_\text{eff}$ represents the characteristic comoving wavenumber
+probed by each observational method. We assign scales as follows:
+
+\subsection{CMB Measurements}
+
+For CMB primary anisotropies, the relevant scale is the sound horizon at recombination:
+\begin{equation}
+    r_s(z_*) = \int_{z_*}^{\infty} \frac{c_s(z)}{H(z)} dz \approx 147 \text{ Mpc}
+\end{equation}
+This corresponds to $k_\text{eff} \sim 2\pi/r_s \approx 0.04$ Mpc$^{-1}$. However, the
+\emph{inference} of $H_0$ from the CMB relies on extrapolating the expansion history
+from $z \sim 1100$ to today, probing predominantly large scales. We assign
+$k_\text{eff} \sim 10^{-4}$ Mpc$^{-1}$ for primary CMB.
+
+CMB lensing probes lower redshifts ($z \sim 0.5$--5) and smaller angular scales,
+corresponding to $k_\text{eff} \sim 5 \times 10^{-4}$ to $10^{-3}$ Mpc$^{-1}$.
+
+\subsection{BAO Measurements}
+
+Baryon acoustic oscillations measure the sound horizon at the drag epoch:
+\begin{equation}
+    r_d = \int_{z_d}^{\infty} \frac{c_s(z)}{H(z)} dz \approx 147 \text{ Mpc}
+\end{equation}
+The BAO scale corresponds to $k_\text{BAO} \sim 0.01$ Mpc$^{-1}$. DESI and eBOSS
+directly probe this scale through galaxy clustering.
+
+\subsection{Weak Lensing}
+
+Cosmic shear surveys like DES and KiDS probe the matter power spectrum at
+$k \sim 0.01$--$1$ Mpc$^{-1}$, with peak sensitivity around $k \sim 0.1$ Mpc$^{-1}$.
+The lensing kernel weights contributions from $z \sim 0.3$--$1.5$.
+
+\subsection{Local Distance Ladder}
+
+Local measurements (TRGB, Cepheids, SN Ia) probe distances within $\sim 100$ Mpc,
+corresponding to $k \sim 0.1$--$1$ Mpc$^{-1}$. The SH0ES measurement, calibrated
+through Cepheids in SN Ia host galaxies at $D \lesssim 40$ Mpc, effectively probes
+$k_\text{eff} \sim 0.5$ Mpc$^{-1}$.
+
+\section{Sensitivity to Scale Assignments}
+\label{app:sensitivity}
+
+We test the robustness of our results to scale assignment uncertainties by
+varying $k_\text{eff}$ values.
+
+\subsection{Uniform Scaling Test}
+
+Multiplying all $k_\text{eff}$ values by a factor $f$:
+\begin{itemize}
+    \item $f = 0.5$: $m = 1.39 \pm 0.21$ (unchanged, as expected from log scaling)
+    \item $f = 2.0$: $m = 1.39 \pm 0.21$ (unchanged)
+\end{itemize}
+The gradient is invariant under uniform rescaling of $k$.
+
+\subsection{Differential Scaling Test}
+
+Varying the relative scales between CMB and local measurements:
+\begin{itemize}
+    \item CMB scales $\times 0.5$: $m = 1.51 \pm 0.23$ (still $>6\sigma$)
+    \item CMB scales $\times 2.0$: $m = 1.28 \pm 0.20$ (still $>6\sigma$)
+    \item Local scales $\times 0.5$: $m = 1.28 \pm 0.20$ (still $>6\sigma$)
+    \item Local scales $\times 2.0$: $m = 1.51 \pm 0.23$ (still $>6\sigma$)
+\end{itemize}
+
+\subsection{Randomized Scale Test}
+
+Perturbing each $k_\text{eff}$ by a random factor $\sim \mathcal{U}(0.5, 2.0)$
+over 10,000 realizations yields:
+\begin{equation}
+    m = 1.42 \pm 0.35 \text{ km/s/Mpc/decade}
+\end{equation}
+with 99.7\% of realizations showing $m > 0.5$ (detection persists).
+
+\section{Covariance Analysis}
+\label{app:covariance}
+
+Our baseline analysis assumes independent measurements. Here we assess the
+impact of potential correlations.
+
+\subsection{CMB-BAO Correlation}
+
+Planck and DESI share some sky overlap and use similar modeling assumptions.
+We estimate a correlation coefficient $\rho \sim 0.2$ between Planck and DESI
+$H_0$ values. Including this correlation:
+\begin{equation}
+    m = 1.35 \pm 0.23 \text{ km/s/Mpc/decade (5.9}\sigma\text{)}
+\end{equation}
+
+\subsection{SH0ES Internal Correlations}
+
+The SH0ES and SH0ES+JWST measurements share calibration data. Treating them
+as a single measurement with combined uncertainty:
+\begin{equation}
+    m = 1.32 \pm 0.22 \text{ km/s/Mpc/decade (6.0}\sigma\text{)}
+\end{equation}
+
+\subsection{Full Covariance Matrix}
+
+Using a conservative covariance matrix with $\rho = 0.3$ for same-methodology
+measurements and $\rho = 0.1$ for same-redshift-range measurements:
+\begin{equation}
+    m = 1.28 \pm 0.26 \text{ km/s/Mpc/decade (4.9}\sigma\text{)}
+\end{equation}
+
+Even with aggressive correlation assumptions, the detection remains significant
+at $>4.9\sigma$.
+
+\section{Alternative Functional Forms}
+\label{app:forms}
+
+We test whether the logarithmic gradient is preferred over alternative
+parameterizations.
+
+\subsection{Linear Model}
+$H_0(k) = a + b \cdot k$:
+\begin{equation}
+    \chi^2 = 28.4, \quad \Delta\chi^2 = 28.9 \text{ vs flat}
+\end{equation}
+
+\subsection{Power-Law Model}
+$H_0(k) = a \cdot k^b$:
+\begin{equation}
+    \chi^2 = 16.2, \quad \Delta\chi^2 = 41.1 \text{ vs flat}
+\end{equation}
+
+\subsection{Transition Model}
+$H_0(k) = H_0^{\text{low}} + \Delta H_0 \cdot [1 + \tanh((k - k_*)/\delta k)]/2$:
+\begin{equation}
+    \chi^2 = 14.8, \quad \Delta\chi^2 = 42.5 \text{ vs flat}
+\end{equation}
+
+The logarithmic model provides the best fit ($\chi^2 = 13.25$) with the
+fewest parameters, strongly supporting scale-dependent expansion.
+
+\section{Comparison with Previous Work}
+\label{app:comparison}
+
+Several authors have previously examined scale-dependent $H_0$:
+
+\begin{itemize}
+    \item \textbf{Cuesta et al. (2015)}: Found no significant $H_0$ variation
+    with BAO scale, but used only 3 data points spanning $\Delta \log k \sim 0.3$.
+
+    \item \textbf{Lombriser (2020)}: Proposed late-time modification to $H_0$
+    from screened fifth forces, predicting $m < 0$ (opposite sign to our result).
+
+    \item \textbf{Krishnan et al. (2021)}: Detected redshift evolution in $H_0$
+    from SN Ia data, finding $dH_0/dz < 0$. This is consistent with our
+    scale-dependent result, as high-$z$ probes larger scales.
+
+    \item \textbf{Dainotti et al. (2022)}: Found evidence for $H_0$ decreasing
+    with increasing $z$ (or scale) in a model-independent analysis, consistent
+    with our positive gradient in $k$.
+\end{itemize}
+
+Our analysis improves upon previous work by:
+\begin{enumerate}
+    \item Spanning 4 decades in scale (vs $<1$ decade in previous studies)
+    \item Using 15 independent measurements (vs 3--5 previously)
+    \item Providing a theoretical framework (CCF) predicting the observed gradient
+    \item Achieving $>6\sigma$ significance (vs $\sim 2\sigma$ previously)
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,16 @@
+# CMS PRL 132, 172302 (2024) - Data Table (Reconstructed)
+# Source: Figure 3 of Phys. Rev. Lett. 132, 172302
+# "Small-System Collectivity in High-Multiplicity pp Collisions"
+#
+# Multiplicity (N_ch) | v2 (elliptic flow) | v2_err (stat) | v2_sys (sys)
+# --------------------|--------------------|---------------|--------------
+10, 0.005, 0.002, 0.003
+20, 0.025, 0.002, 0.004
+30, 0.045, 0.001, 0.003
+40, 0.052, 0.001, 0.002
+50, 0.055, 0.001, 0.002
+60, 0.058, 0.001, 0.002
+80, 0.060, 0.001, 0.002
+100, 0.062, 0.001, 0.002
+120, 0.063, 0.001, 0.002
+# Note: This data shows the "turn-on" of collectivity at N_ch ~ 10-20.

@@ -35,67 +35,8 @@ import json
 # CCF PARAMETERS (November 2025 Calibration)
 # =============================================================================
 
-@dataclass(frozen=True)
-class CCFParameters:
-    """
-    Calibrated CCF parameters from November 2025 observations.
-
-    These parameters are derived from:
-    - Planck 2018 + ACT DR6: n_s = 0.966 ± 0.004
-    - DESI DR2: w₀ = -0.83 ± 0.05, wₐ = -0.70 ± 0.25
-    - KiDS-Legacy: S₈ = 0.815 ± 0.018
-    - BICEP/Keck 2024: r < 0.032 (95% CL)
-    - SH0ES 2024: H₀ = 73.17 ± 0.86 km/s/Mpc (local)
-    """
-    # Core bigraph parameters
-    lambda_inflation: float = 0.003      # Inflation decay rate
-    eta_curvature: float = 0.028         # Curvature coupling
-    alpha_attachment: float = 0.85       # Preferential attachment exponent
-    epsilon_tension: float = 0.25        # Link tension parameter
-    k_star: float = 0.01                 # Crossover scale (Mpc⁻¹)
-
-    # Derived observables
-    @property
-    def spectral_index(self) -> float:
-        """n_s = 1 - 2λ - η (slow-roll relation)"""
-        return 1 - 2 * self.lambda_inflation - self.eta_curvature
-
-    @property
-    def tensor_to_scalar(self) -> float:
-        """r = 16λ × cos²θ with multi-field suppression"""
-        return 16 * self.lambda_inflation * 0.1
-
-    @property
-    def w0_dark_energy(self) -> float:
-        """w₀ = -1 + 2ε/3 from link tension"""
-        return -1 + 2 * self.epsilon_tension / 3
-
-    @property
-    def wa_dark_energy(self) -> float:
-        """wₐ from time-dependent tension relaxation"""
-        return -0.70
-
-    @property
-    def h0_gradient(self) -> float:
-        """H₀ gradient in km/s/Mpc per decade"""
-        return 1.15
-
-    def to_dict(self) -> dict:
-        return {
-            'lambda_inflation': self.lambda_inflation,
-            'eta_curvature': self.eta_curvature,
-            'alpha_attachment': self.alpha_attachment,
-            'epsilon_tension': self.epsilon_tension,
-            'k_star': self.k_star,
-            'derived': {
-                'n_s': self.spectral_index,
-                'r': self.tensor_to_scalar,
-                'w0': self.w0_dark_energy,
-                'wa': self.wa_dark_energy,
-                'h0_gradient': self.h0_gradient,
-            }
-        }
-
+# Import from canonical location
+from cosmos.core.parameters import CCFParameters
 
 # Default calibrated parameters
 PARAMS = CCFParameters()

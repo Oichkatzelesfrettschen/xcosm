@@ -24,43 +24,8 @@ from datetime import datetime
 # CCF PARAMETERS (November 2025 Calibrated)
 # =============================================================================
 
-@dataclass(frozen=True)
-class CCFParameters:
-    """
-    Calibrated CCF parameters from November 2025 observational data.
-
-    Derived from:
-    - Planck 2018 + ACT DR6: n_s = 0.966 ± 0.004
-    - DESI DR2: w₀ = -0.83 ± 0.05, wₐ = -0.70 ± 0.25
-    - KiDS-Legacy: S₈ = 0.815 ± 0.018
-    - BICEP/Keck 2024: r < 0.032 (95% CL)
-    """
-    lambda_inflation: float = 0.003      # Inflation decay rate
-    eta_curvature: float = 0.028         # Bigraph curvature coupling
-    alpha_attachment: float = 0.85       # Preferential attachment exponent
-    epsilon_tension: float = 0.25        # Link tension parameter
-    k_star: float = 0.01                 # Crossover scale (Mpc⁻¹)
-
-    @property
-    def spectral_index(self) -> float:
-        """n_s = 1 - 2λ - η (slow-roll relation)"""
-        return 1 - 2 * self.lambda_inflation - self.eta_curvature
-
-    @property
-    def tensor_to_scalar(self) -> float:
-        """r = 16λ × cos²θ (multi-field suppression)"""
-        return 16 * self.lambda_inflation * 0.1  # cos²θ ≈ 0.1
-
-    @property
-    def w0_dark_energy(self) -> float:
-        """w₀ = -1 + 2ε/3 (link tension contribution)"""
-        return -1 + 2 * self.epsilon_tension / 3
-
-    @property
-    def wa_dark_energy(self) -> float:
-        """wₐ from time-dependent tension relaxation"""
-        return -0.70  # Calibrated to DESI DR2
-
+# Import from canonical location
+from cosmos.core.parameters import CCFParameters
 
 PARAMS = CCFParameters()
 

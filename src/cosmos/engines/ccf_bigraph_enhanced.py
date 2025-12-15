@@ -22,20 +22,14 @@ import json
 import math
 
 # Import existing engine components
+from cosmos.core.parameters import CCFParameters
 try:
     from cosmos.engines.ccf_bigraph_engine import (
-        CCFParameters, PARAMS, NodeType, LinkType,
+        PARAMS, NodeType, LinkType,
         Node, Link, CosmologicalBigraph, CosmologicalBigraphEngine
     )
 except ImportError:
-    # Fallback definitions if import fails
-    @dataclass(frozen=True)
-    class CCFParameters:
-        lambda_inflation: float = 0.003
-        eta_curvature: float = 0.028
-        alpha_attachment: float = 0.85
-        epsilon_tension: float = 0.25
-        k_star: float = 0.01
+    # Fallback for PARAMS if engine not available
     PARAMS = CCFParameters()
 
 

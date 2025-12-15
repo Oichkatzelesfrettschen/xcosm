@@ -198,7 +198,7 @@ def main():
     # Load Pantheon+ data
     # (Assuming local file exists, otherwise download)
     try:
-        df = load_pantheon_data('data/raw/pantheon_plus_data.dat')
+        df = load_pantheon_data('data/raw/Pantheon+SH0ES.dat')
     except FileNotFoundError:
     print(f"Loaded {len(df)} supernovae")
     print()

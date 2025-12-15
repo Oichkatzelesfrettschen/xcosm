@@ -152,10 +152,10 @@ Documentation:
   2. pantheon_summary.txt              - This summary (plain text)
 
 Visualizations:
-  1. pantheon_bifurcation_plots.png    - 4-panel diagnostic plots
+  1. pantheon_bifurcation_plots.png    - 4-panel diagnostic plots (moved to output/plots/)
 
 Raw Data:
-  1. pantheon_plus_data.dat            - Pantheon+ full dataset (1701 SNe)
+  1. Pantheon+SH0ES.dat                - Pantheon+ full dataset (1702 SNe)
 
 ================================================================================
 COLUMN DEFINITIONS

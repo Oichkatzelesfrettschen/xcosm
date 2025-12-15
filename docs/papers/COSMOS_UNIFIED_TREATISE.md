@@ -998,7 +998,7 @@ D = compute_fractal_dimension_surface(solver.Y_scalar)
 
 | File | Description | Format |
 |------|-------------|--------|
-| `pantheon_plus_full.dat` | Full Pantheon+ SN Ia sample | ASCII |
+| `Pantheon+SH0ES.dat` | Full Pantheon+ SN Ia sample | ASCII |
 | `production_DZ_results.npz` | D(Z) sweep results | NumPy |
 | `density_sweep_results.npz` | D(ρ) parameter space | NumPy |
 | `h0_gradient_results.json` | H₀(k) fit parameters | JSON |

@@ -1,7 +1,24 @@
 # Unified Prediction Framework: D(z) Evolution and Cosmological Systematics
 
 **Date:** 2025-11-28
-**Status:** Complete
+**Status:** DEPRECATED - Superseded by SPANDREL_V4_FINAL.md
+
+---
+
+## DEPRECATION NOTICE
+
+**This document is deprecated and kept for historical reference only.**
+
+**Superseded by:** [SPANDREL_V4_FINAL.md](SPANDREL_V4_FINAL.md)
+
+**Reason:** This document describes the Spandrel Framework v2.0, which has been superseded by v4.0. The key finding has changed:
+
+- **v2.0 (this document):** Flame fractal dimension D(Z, age) drives luminosity variation
+- **v4.0 (current):** Flame dimension D is approximately universal (~2.6); C/O ratio is the primary driver
+
+The v4.0 framework discovered a "double washout" effect where turbulent diffusivity overwhelms molecular diffusivity at high Reynolds number, causing D to converge to a universal value regardless of metallicity or density.
+
+**Please refer to SPANDREL_V4_FINAL.md for the current understanding.**
 
 ---
 

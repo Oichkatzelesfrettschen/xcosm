@@ -2,8 +2,30 @@
 ## Multi-Mechanism Origin of the Phantom Dark Energy Artifact
 
 **Date:** November 28, 2025
-**Status:** Current
+**Status:** DEPRECATED - Superseded by SPANDREL_V4_FINAL.md
 **Framework Version:** 3.0
+
+---
+
+## DEPRECATION NOTICE
+
+**This document is deprecated and kept for historical reference only.**
+
+**Superseded by:** [../research/SPANDREL_V4_FINAL.md](../research/SPANDREL_V4_FINAL.md)
+
+**Reason:** This document describes Spandrel Framework v3.0, which has been superseded by v4.0. The critical difference:
+
+- **v3.0 (this document):** D(Z) scaling exists but is suppressed by turbulent washout; multi-mechanism model with metallicity contributing ~20% of DESI signal
+- **v4.0 (current):** D converges to universal value ~2.6 at infinite resolution (β → 0); C/O ratio (nucleosynthetic yields) is the primary driver, not flame geometry
+
+The v4.0 framework represents a more mature understanding after discovering that the metallicity-D coupling vanishes completely at high Reynolds number. The true physics involves nucleosynthesis (C/O → Ye → M_Ni) rather than flame fractal dimension.
+
+**Key Evolution:**
+1. v1.0-2.0: D(Z) as primary mechanism
+2. v3.0: Multi-mechanism with D(Z) as partial contributor (this document)
+3. v4.0: D falsified; C/O ratio as primary mechanism (current)
+
+**Please refer to SPANDREL_V4_FINAL.md for the current understanding.**
 
 ---
 

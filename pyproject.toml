@@ -11,7 +11,14 @@ dependencies = [
     "numpy",
     "matplotlib",
     "scipy",
-    "pandas"
+    "pandas",
+    "networkx"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov"
 ]
 
 [project.scripts]

@@ -25,7 +25,7 @@ import os
 
 # Constants
 DATA_URL = "https://raw.githubusercontent.com/PantheonPlusSH0ES/DataRelease/main/Pantheon%2B_Data/4_DISTANCES_AND_COVAR/Pantheon%2BSH0ES.dat"
-LOCAL_FILE = "data/raw/pantheon_plus_full.dat"
+LOCAL_FILE = "data/raw/Pantheon+SH0ES.dat"
 
 def download_pantheon_data():
     """Download Pantheon+ data if not already present."""

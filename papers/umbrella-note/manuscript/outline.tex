@@ -166,11 +166,14 @@ This is \textbf{not} ``convergent evidence''---it is an \textit{organizing motif
 
 Figure~\ref{fig:dependency_graph} shows the hypothesis dependency graph. Arrows indicate logical/causal dependencies. Red nodes (calibrated parameters) are \textbf{fitted to data} and provide \textbf{no independent confirmation}.
 
+% Figure placeholder - generate with hypothesis_matrix.py
 \begin{figure}[h]
 \centering
-% Include generated figure from hypothesis_matrix.py
-\includegraphics[width=0.9\textwidth]{figures/hypothesis_dependency.pdf}
-\caption{COSMOS hypothesis dependency graph. \textcolor{red}{Red nodes} are calibrated (not predictions). \textcolor{green}{Green nodes} are independent inputs. \textcolor{orange}{Orange nodes} are testable predictions. Most dependencies flow through calibrated parameters, not independent inputs.}
+\fbox{\parbox{0.85\textwidth}{\centering\vspace{2cm}
+\textbf{[Hypothesis Dependency Graph]}\\[0.5em]
+\small Generate with: \texttt{python papers/umbrella-note/code/hypothesis\_matrix.py}
+\vspace{2cm}}}
+\caption{XCOSM hypothesis dependency graph. \textcolor{red}{Red nodes} are calibrated (not predictions). \textcolor{green}{Green nodes} are independent inputs. \textcolor{orange}{Orange nodes} are testable predictions. Most dependencies flow through calibrated parameters, not independent inputs.}
 \label{fig:dependency_graph}
 \end{figure}
 

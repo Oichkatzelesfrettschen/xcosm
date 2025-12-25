@@ -1,0 +1,149 @@
+# CMB-S4 Forecast Sensitivity and Parameter Constraints
+# Sources:
+#   - CMB-S4 Collaboration (2020), ApJ 926, 54, arXiv:2008.12619
+#   - CMB-S4 Science Book (2016), arXiv:1610.02743
+#   - Revised CMB-S4 Project Plan (2025)
+#
+# CMB-S4 is the next-generation ground-based CMB experiment
+
+metadata:
+  collaboration: "CMB-S4"
+  status: "Under construction"
+  first_light: "~2029"
+  full_operations: "~2030-2040"
+  sites:
+    - "South Pole"
+    - "Atacama Desert, Chile"
+
+# Primary Science Goals
+science_goals:
+  primordial_gravitational_waves:
+    target: "Detect or rule out r > 0.001"
+    significance: "Test inflation paradigm"
+
+  neutrino_mass:
+    target: "Sum(m_nu) < 0.06 eV (95% CL)"
+    method: "CMB lensing + BAO"
+
+  relativistic_species:
+    target: "Delta N_eff < 0.06"
+    significance: "Probe light relics"
+
+  dark_energy:
+    method: "Cross-correlation with optical surveys"
+
+# Key Parameter Forecasts
+forecasts:
+  # Tensor-to-scalar ratio (primordial gravitational waves)
+  r:
+    target_sigma: 0.0005  # sigma(r) = 5e-4
+    target_sensitivity: "r = 0.001 at 2-sigma"
+    improvement_over_planck: ">100x"
+    notes: "Central science driver"
+
+  # Scalar spectral index
+  n_s:
+    current_best: 0.9649
+    current_uncertainty: 0.0042
+    cmb_s4_uncertainty: 0.002  # ~2x improvement
+    notes: "Combined with BAO/LSS"
+
+  # Effective number of relativistic species
+  N_eff:
+    current_best: 2.99
+    current_uncertainty: 0.17
+    cmb_s4_uncertainty: 0.03
+    improvement: "5-6x over Planck"
+    significance: "Detect extra light relics"
+
+  # Sum of neutrino masses
+  sum_m_nu_eV:
+    current_upper_95: 0.12
+    cmb_s4_target_95: 0.06
+    method: "CMB lensing auto/cross-spectra"
+    notes: "May detect or set stronger limits"
+
+  # Running of spectral index
+  dn_s_dlnk:
+    current_uncertainty: 0.007
+    cmb_s4_uncertainty: 0.003
+    notes: "Tests slow-roll consistency"
+
+  # Tensor spectral index (if r detected)
+  n_t:
+    detectability: "If r > 0.01"
+    consistency_relation: "n_t = -r/8"
+    notes: "Strong inflation test"
+
+# Comparison with current constraints (as of Dec 2025)
+current_state:
+  # Combined Planck + SPT + ACT + BICEP/Keck
+  r_upper_95: 0.034  # Latest 2025 combined
+  n_s: 0.9682
+  n_s_err: 0.0032
+
+  # With DESI BAO
+  n_s_with_desi: 0.9728
+  n_s_with_desi_err: 0.0029
+
+# CCF Framework Predictions to Test
+ccf_predictions:
+  r_predicted: 0.0048
+  ccf_comment: "Detectable by CMB-S4 at ~10-sigma if true"
+
+  consistency_relation:
+    prediction: "R = n_t / (-r/8) = 1.0 +/- 0.1"
+    ccf_value: 1.0
+    cmb_s4_sensitivity: "Can test at ~10% level if r > 0.01"
+
+  n_s_predicted: 0.9660
+  n_s_comment: "Consistent with Planck 2018 (0.9649 ± 0.0042) at 0.3σ"
+
+# Experimental Configuration
+configuration:
+  # Small-Aperture Telescopes (SAT) - for B-modes
+  SAT:
+    count: 9
+    location: "South Pole"
+    aperture_m: 0.5
+    bands_GHz: [30, 40, 85, 95, 145, 155, 220, 270]
+    purpose: "Primordial B-modes"
+
+  # Large-Aperture Telescope (LAT) - for lensing/clusters
+  LAT:
+    count: 2
+    location: "Chile"
+    aperture_m: 6.0
+    bands_GHz: [20, 30, 40, 85, 95, 145, 155, 220, 270]
+    purpose: "CMB lensing, clusters, transients"
+
+# Timeline
+timeline:
+  2025: "Final design review"
+  2026-2028: "Construction and deployment"
+  2029: "First light"
+  2030-2035: "Initial science operations"
+  2035-2040: "Extended operations"
+
+# Related Experiments
+related_experiments:
+  simons_observatory:
+    status: "Operating (2024+)"
+    r_sensitivity: 0.003
+
+  bicep_array:
+    status: "Operating"
+    r_sensitivity: 0.003
+
+  litebird:
+    status: "Planned (2032)"
+    r_sensitivity: 0.001
+    notes: "Space-based, complementary"
+
+citations:
+  - |
+    CMB-S4 Collaboration, "CMB-S4: Forecasting Constraints on
+    Primordial Gravitational Waves", ApJ 926, 54 (2022).
+    arXiv:2008.12619
+  - |
+    Abazajian et al., "CMB-S4 Science Book", arXiv:1610.02743 (2016)

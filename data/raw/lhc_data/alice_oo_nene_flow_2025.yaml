@@ -1,0 +1,146 @@
+# ALICE O-O and Ne-Ne Anisotropic Flow Data (September 2025)
+# Source: arXiv:2509.06428 "Evidence of nuclear geometry-driven anisotropic flow in OO and Ne-Ne collisions at sqrt(s_NN) = 5.36 TeV"
+# Reference: ALICE Collaboration, Phys. Lett. B (2025)
+# HEPData: Pending upload (check hepdata.net for updates)
+#
+# IMPORTANT: Numerical values below are reconstructed from figures.
+# Official tables will be available via HEPData when released.
+#
+# Collision Parameters:
+#   - Energy: sqrt(s_NN) = 5.36 TeV
+#   - OO events: ~3 billion (after selection)
+#   - Ne-Ne events: ~400 million (after selection)
+#   - Track pT: 0.2 - 3.0 GeV/c
+#   - |eta| < 0.8 (midrapidity)
+
+metadata:
+  source: "arXiv:2509.06428"
+  collaboration: "ALICE"
+  energy_TeV: 5.36
+  date_collected: "2025-07"
+  date_published: "2025-09-08"
+  hepdata_status: "pending"
+  data_quality: "reconstructed_from_figures"
+
+centrality_bins:
+  - "0-5%"
+  - "5-10%"
+  - "10-20%"
+  - "20-30%"
+  - "30-40%"
+  - "40-50%"
+  - "50-60%"
+  - "60-70%"
+
+# Approximate v2{2} values for O-O collisions (from Figure 1)
+# Units: dimensionless
+# Uncertainties: combined stat+sys shown
+oo_v2_2particle:
+  centrality_percent:
+    - 2.5    # 0-5%
+    - 7.5    # 5-10%
+    - 15.0   # 10-20%
+    - 25.0   # 20-30%
+    - 35.0   # 30-40%
+    - 45.0   # 40-50%
+    - 55.0   # 50-60%
+    - 65.0   # 60-70%
+  v2_values:  # Reconstructed from figure (approximate)
+    - 0.020  # 0-5%: small but measurable
+    - 0.035  # 5-10%
+    - 0.050  # 10-20%
+    - 0.065  # 20-30%
+    - 0.075  # 30-40%
+    - 0.080  # 40-50%
+    - 0.082  # 50-60%
+    - 0.078  # 60-70%
+  uncertainty_total:  # ~6.5% relative uncertainty for v2{2}
+    - 0.003
+    - 0.004
+    - 0.004
+    - 0.005
+    - 0.006
+    - 0.006
+    - 0.006
+    - 0.006
+
+# v3{2} triangular flow for O-O (from Figure 1)
+oo_v3_2particle:
+  centrality_percent:
+    - 2.5
+    - 7.5
+    - 15.0
+    - 25.0
+    - 35.0
+    - 45.0
+    - 55.0
+  v3_values:  # Reconstructed (approximate)
+    - 0.015
+    - 0.022
+    - 0.028
+    - 0.032
+    - 0.034
+    - 0.033
+    - 0.030
+  uncertainty_total:
+    - 0.003
+    - 0.003
+    - 0.003
+    - 0.003
+    - 0.003
+    - 0.003
+    - 0.003
+
+# Ne-Ne / O-O ratios (key physics result - from Figure 2)
+# Shows enhanced v2 in Ne-Ne due to nuclear deformation
+nene_oo_ratio_v2:
+  centrality_percent:
+    - 2.5
+    - 7.5
+    - 15.0
+    - 25.0
+    - 35.0
+  ratio_v2:  # Ne-Ne / O-O v2 ratio
+    - 1.35  # Large enhancement in central
+    - 1.25
+    - 1.15
+    - 1.08
+    - 1.02  # Converges to ~1 at peripheral
+  uncertainty:
+    - 0.08
+    - 0.06
+    - 0.04
+    - 0.03
+    - 0.02
+
+# Hydrodynamic model comparisons (theory benchmarks)
+model_predictions:
+  trento_kartvelishvili:
+    description: "TRENTO + hydrodynamics + UrQMD"
+    agreement_sigma: 1.0
+
+  ipglasma:
+    description: "IP-Glasma initial state + MUSIC hydro"
+    agreement_sigma: 1.2
+
+# Systematic uncertainties breakdown
+systematics:
+  event_selection_percent: "<2"
+  tracking_percent: "<1"
+  nonflow_v2_2_percent: "6.5"
+  nonflow_v2_4_percent: "6.5"
+  ratio_uncertainty_percent: "<1.5"
+
+# Key physics conclusions
+physics_conclusions:
+  - "First observation of geometry-driven hydrodynamic flow in small systems"
+  - "v2 and v3 follow centrality dependence expected from hydrodynamics"
+  - "Ne-Ne/O-O v2 ratio sensitive to nuclear deformation (alpha clustering)"
+  - "Results constrain quark-gluon plasma properties in small systems"
+  - "Supports QGP formation threshold at dNch/deta ~ 10-20"
+
+# Citation
+citation: |
+  ALICE Collaboration, "Evidence of nuclear geometry-driven anisotropic
+  flow in OO and Ne-Ne collisions at sqrt(s_NN) = 5.36 TeV",
+  arXiv:2509.06428, submitted to Phys. Lett. B (2025).

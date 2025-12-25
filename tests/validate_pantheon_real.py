@@ -14,12 +14,13 @@ References:
 - arXiv:2202.04077 (Cosmological constraints)
 """
 
+import os
+import urllib.request
+
+import matplotlib.pyplot as plt
 import numpy as np
 from scipy.integrate import quad
 from scipy.optimize import minimize
-import matplotlib.pyplot as plt
-import urllib.request
-import os
 
 # =============================================================================
 # CONSTANTS
@@ -127,13 +128,14 @@ def luminosity_distance(z, Omega_m, xi=None, H0=70.0):
 
     If xi is None, use ΛCDM. Otherwise, use entropic model.
     """
-    if xi is None:
-        # ΛCDM
-        integrand = lambda zp: 1.0 / E_z_lcdm(zp, Omega_m)
-    else:
-        # Entropic
-        integrand = lambda zp: 1.0 / E_z_entropic(zp, Omega_m, xi)
 
+    def integrand_lcdm(zp):
+        return 1.0 / E_z_lcdm(zp, Omega_m)
+
+    def integrand_entropic(zp):
+        return 1.0 / E_z_entropic(zp, Omega_m, xi)
+
+    integrand = integrand_lcdm if xi is None else integrand_entropic
     D_C, _ = quad(integrand, 0, z, limit=100)
     D_L = (1 + z) * D_C * (C_LIGHT / H0)  # Mpc
 
@@ -295,9 +297,7 @@ def compare_models(z_data, mu_data, sigma_data):
 def plot_hubble_diagram(z_data, mu_data, sigma_data, results, output_file):
     """Plot Hubble diagram with best-fit models."""
 
-    fig, (ax1, ax2) = plt.subplots(
-        2, 1, figsize=(12, 10), height_ratios=[3, 1], sharex=True
-    )
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 10), height_ratios=[3, 1], sharex=True)
 
     # Model curves
     z_model = np.linspace(0.01, max(z_data), 200)
@@ -406,9 +406,7 @@ def main():
 
     print(f"\n  AEG prediction: ξ = {xi_predicted:.3f}")
     print(f"  Pantheon fit:   ξ = {xi_fitted:.3f}")
-    print(
-        f"  Deviation:      {abs(xi_fitted - xi_predicted) / xi_predicted * 100:.1f}%"
-    )
+    print(f"  Deviation:      {abs(xi_fitted - xi_predicted) / xi_predicted * 100:.1f}%")
 
     # Check if ξ > 0 (positive entropic contribution)
     if xi_fitted > 0:
@@ -420,7 +418,8 @@ def main():
     print("\n" + "=" * 70)
     print("SUMMARY")
     print("=" * 70)
-    print(f"""
+    print(
+        f"""
     Dataset: Pantheon ({len(z_data)} SNe Ia)
     Redshift range: {z_data.min():.3f} - {z_data.max():.3f}
 
@@ -443,7 +442,8 @@ def main():
       Match: {100 - abs(xi_fitted - xi_predicted) / xi_predicted * 100:.1f}%
 
     E09 STATUS: {"VALIDATED" if abs(xi_fitted - xi_predicted) / xi_predicted < 0.5 else "INCONCLUSIVE"}
-    """)
+    """
+    )
 
     return results
 

@@ -1,0 +1,489 @@
+% outline.tex
+% COSMOS Program Overview - LaTeX Outline
+% Short 6-10 page overview of research PROGRAM (not unified theory)
+%
+% CRITICAL CONSTRAINTS:
+% - Must NOT include BIC comparisons or "tension resolved" language
+% - Reference individual papers for details
+% - Explicit "What We Do NOT Claim" section
+%
+% To be written AFTER individual papers are complete
+
+\documentclass[12pt, letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{xcolor}
+
+\title{COSMOS: A Falsification Program Linking Exceptional Algebra Motifs, \\
+       Discrete Cosmogenesis, and Supernova Systematics}
+
+\author{%
+  [Author Name]\\
+  \small [Institution]\\
+  \small \texttt{email@institution.edu}
+}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\noindent
+COSMOS is a \textbf{research program}---not a unified theory---exploring three loosely connected hypothesis clusters: (1) exceptional algebraic structures (octonions, Jordan algebras, $F_4/E_6$) as organizing motifs for cosmological parameter values, (2) discrete pregeometry via bigraph dynamics with Ollivier-Ricci curvature, and (3) Type Ia supernova population evolution as a systematic affecting dark energy inference.
+
+We present the dependency structure of hypotheses, distinguishing genuinely independent inputs from calibrated parameters, and enumerate falsification tests with explicit timelines. We report three falsified hypotheses ($\varphi^{-n}$ fermion masses, bigraph OR convergence, Strong CP original formulation) and five pending tests (Spandrel host bias, $H_0(R)$ scale-dependence, $r = 0.0048$ tensor modes, $\delta_{CP} = 67.8^\circ$, connected-regime OR convergence).
+
+The appearance of $\varepsilon = 1/4$ in multiple contexts is used as an \textit{organizing motif} for hypothesis generation, \textbf{not} as evidence of deep unification. Of six claimed appearances, only two (black hole entropy, percolation threshold) are genuinely independent of cosmological calibration targets.
+
+This note does NOT claim to resolve cosmological tensions, demonstrate emergent general relativity, or provide statistically significant detections. It invites critical evaluation of a falsifiable research program organized around algebraic and discrete-geometric constraints.
+
+\textbf{Keywords:} cosmology, dark energy, Type Ia supernovae, exceptional algebras, discrete geometry, falsification
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+% 1 page: Three loosely connected research directions
+% Explicit framing: "research program with testable hypotheses"
+% NOT: "unified framework that resolves tensions"
+
+COSMOS is a research program, not a unified theory. It explores connections between three domains:
+
+\subsection{Three Research Directions}
+
+\paragraph{Direction 1: Algebraic Motifs}
+Exceptional algebraic structures (octonions $\mathbb{O}$, Jordan algebra $J_3(\mathbb{O})$, Lie groups $F_4, E_6, G_2$) produce numerical relationships that approximately match cosmological observables when one adopts the organizing principle $\varepsilon = 1/4$.
+
+\textbf{Status:} Most appearances are calibrated to data, not predictions. See Section~\ref{sec:epsilon_motif}.
+
+\paragraph{Direction 2: Discrete Cosmogenesis}
+Bigraph rewriting dynamics with Ollivier-Ricci (OR) curvature flow provide a toy model for emergent spacetime geometry. Under this model, curvature should converge to general relativistic Ricci curvature in the continuum limit.
+
+\textbf{Status:} Current simulations show \textit{divergence}, not convergence ($\kappa_{OR} \sim -N^{0.55}$). See Papers 3 and Section~\ref{sec:falsified}.
+
+\paragraph{Direction 3: Supernova Systematics}
+The ``Spandrel hypothesis'' proposes that DESI DR2's preference for evolving dark energy ($w_0 > -1, w_a < 0$ at 2.8--4.2$\sigma$) arises from unmodeled Type Ia supernova population evolution correlated with host galaxy properties (mass, metallicity, star formation).
+
+\textbf{Status:} Primary falsification test pending (Paper 1). See Section~\ref{sec:pending_tests}.
+
+\subsection{What This Program Is}
+
+\begin{itemize}
+  \item A collection of \textbf{testable hypotheses} with explicit falsification conditions
+  \item A \textbf{dependency analysis} distinguishing independent inputs from calibrated fits
+  \item An \textbf{invitation for critical evaluation} through reproducible data analysis
+\end{itemize}
+
+\subsection{What This Program Is NOT}
+
+\begin{itemize}
+  \item \textbf{NOT} a unified field theory
+  \item \textbf{NOT} a resolution of cosmological tensions (Hubble, $S_8$, etc.)
+  \item \textbf{NOT} a demonstration of emergent general relativity (convergence not shown)
+  \item \textbf{NOT} a statistically significant detection (previous ``4.7$\sigma$'' H$_0$ claims suspended)
+  \item \textbf{NOT} a claim of ``multiple independent confirmations'' (most $\varepsilon = 1/4$ appearances are calibrations)
+\end{itemize}
+
+\section{Hypothesis Inventory}
+\label{sec:hypotheses}
+
+% 2 pages: Detailed hypothesis table with dependency structure
+
+We enumerate all COSMOS hypotheses, classified by independence structure. Table~\ref{tab:hypothesis_inventory} provides the full inventory.
+
+\subsection{Classification System}
+
+\paragraph{Independent Inputs (I):} Established results from independent domains (e.g., black hole thermodynamics, lattice theory, division algebras). These are \textit{not} COSMOS predictions.
+
+\paragraph{Calibrated Parameters (C):} Quantities explicitly fitted to observational data. These are \textbf{not} predictions and provide \textbf{no evidential support} for the program.
+
+\paragraph{Derived Hypotheses (D):} Theoretical constructions built from independent inputs and/or calibrated parameters.
+
+\paragraph{Testable Predictions (P):} Falsifiable claims about future observations.
+
+\begin{table}[h]
+\centering
+\caption{COSMOS Hypothesis Inventory}
+\label{tab:hypothesis_inventory}
+\begin{tabular}{llcp{5cm}}
+\toprule
+ID & Hypothesis & Testable? & Description \\
+\midrule
+\multicolumn{4}{c}{\textit{Independent Inputs}} \\
+\midrule
+I1 & BH entropy $S = A/4$ & No & Bekenstein-Hawking formula (Planck units) \\
+I2 & Percolation $p_c = 1/4$ & No & Bond percolation threshold (specific lattices) \\
+I3 & Octonion structure & No & Division algebra $\mathbb{O}$ structure constants \\
+I4 & Jordan algebra $J_3(\mathbb{O})$ & No & $3 \times 3$ Hermitian octonion matrices \\
+\midrule
+\multicolumn{4}{c}{\textit{Calibrated Parameters (NOT Predictions)}} \\
+\midrule
+C1 & $w_0 = -5/6$ & No & Dark energy EOS calibrated to DESI DR2 \\
+C2 & $n_s = 0.966$ & No & Scalar spectral index calibrated to Planck \\
+C3 & $S_8 = 0.78$ & No & Clustering amplitude calibrated to weak lensing \\
+C4 & $H_0$ gradient slope & No & Scale-dependent expansion calibrated to distance ladder \\
+\midrule
+\multicolumn{4}{c}{\textit{Derived Hypotheses}} \\
+\midrule
+D1 & $\varepsilon = 1/4$ motif & No & Organizing principle (see Section~\ref{sec:epsilon_motif}) \\
+D2 & $F_4 \to J_3(\mathbb{O})$ & No & Exceptional algebra connection \\
+D3 & Bigraph rewriting & Yes & Discrete pregeometry dynamics (Paper 3) \\
+\midrule
+\multicolumn{4}{c}{\textit{Testable Predictions}} \\
+\midrule
+P1 & Spandrel host bias & Yes & SN Ia systematics (Paper 1, 2025 Q1--Q2) \\
+P2 & $r = 0.0048$ & Yes & Tensor modes (CMB-S4, 2029--2032) \\
+P3 & $\delta_{CP} = 67.8^\circ$ & Yes & CKM phase (LHCb/Belle II, 2025--2028) \\
+P4 & OR $\to$ Ricci convergence & Yes & Bigraph curvature (Paper 3, \textbf{FALSIFIED}) \\
+P5 & $H_0(R)$ trend & Yes & Scale-dependent expansion (Paper 2, 2025--2026) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Critical Observation: Most $\varepsilon = 1/4$ Appearances Are Calibrated}
+
+Of the six claimed appearances of $\varepsilon = 1/4$:
+\begin{itemize}
+  \item \textbf{2 independent} (I1: BH entropy, I2: percolation)
+  \item \textbf{3 calibrated} (C1: $w_0$, C2: $n_s$, C3: $S_8$)
+  \item \textbf{1 theoretical} (Jordan algebra structure, unproven connection)
+\end{itemize}
+
+This is \textbf{not} ``convergent evidence''---it is an \textit{organizing motif} used to generate hypotheses. See Section~\ref{sec:epsilon_motif} for detailed analysis.
+
+\section{Dependency Graph}
+\label{sec:dependencies}
+
+% 1 page: Visual dependency structure + brief discussion
+
+Figure~\ref{fig:dependency_graph} shows the hypothesis dependency graph. Arrows indicate logical/causal dependencies. Red nodes (calibrated parameters) are \textbf{fitted to data} and provide \textbf{no independent confirmation}.
+
+\begin{figure}[h]
+\centering
+% Include generated figure from hypothesis_matrix.py
+\includegraphics[width=0.9\textwidth]{figures/hypothesis_dependency.pdf}
+\caption{COSMOS hypothesis dependency graph. \textcolor{red}{Red nodes} are calibrated (not predictions). \textcolor{green}{Green nodes} are independent inputs. \textcolor{orange}{Orange nodes} are testable predictions. Most dependencies flow through calibrated parameters, not independent inputs.}
+\label{fig:dependency_graph}
+\end{figure}
+
+\subsection{Interpretation}
+
+The dependency graph reveals:
+\begin{enumerate}
+  \item Only 4 genuinely independent inputs (I1--I4)
+  \item All testable predictions depend heavily on calibrated parameters
+  \item The $\varepsilon = 1/4$ motif (D1) receives input from both independent (I1, I2) and calibrated (C1, C2, C3) sources
+\end{enumerate}
+
+This structure undermines claims of ``multiple independent confirmations.''
+
+\section{Falsification Program}
+\label{sec:falsification}
+
+% 2 pages: Falsified + pending tests with explicit conditions
+
+\subsection{Falsified Hypotheses}
+\label{sec:falsified}
+
+COSMOS has generated and tested multiple hypotheses. Three have been definitively falsified (Table~\ref{tab:falsified}).
+
+% Include table from falsification_table.py
+\input{tables/falsified_hypotheses.tex}
+
+\paragraph{H1: $\varphi^{-n}$ Fermion Mass Scaling}
+Early exploration tested whether fermion masses follow $m_f = m_0 \varphi^{-n}$ (golden ratio scaling). Result: $\chi^2/\text{dof} = 35,173 / 12 = 2,931$. \textbf{Catastrophically falsified.}
+
+\paragraph{H2: Bigraph OR Curvature Convergence}
+The central hypothesis of discrete cosmogenesis is that Ollivier-Ricci curvature $\kappa_{OR}$ should converge to Ricci curvature $R_{\mu\nu}$ in the continuum limit. Simulations show \textit{divergence}: $\kappa_{OR} \sim -N^{0.55}$.
+
+\textbf{Diagnosis:} CCF uses disconnected bigraphs, operating outside the regime where van der Hoorn et al.\ (2021, 2023) proved convergence (which requires connected graphs). This is an \textbf{open problem}, not a demonstrated result. See Paper 3.
+
+\paragraph{H3: Strong CP (Original Formulation)}
+Original hypothesis: $\theta_{QCD} = \pi/8$ from octonion geometry. Neutron electric dipole moment limits require $\theta < 10^{-10}$, but $\pi/8 \approx 0.393$. \textbf{Immediately falsified.} (Could be reframed after axion solution, but not pursued.)
+
+\subsection{Pending Falsification Tests}
+\label{sec:pending_tests}
+
+Five testable predictions remain under evaluation (Table~\ref{tab:pending_tests}).
+
+% Include table from falsification_table.py
+\input{tables/pending_tests.tex}
+
+\paragraph{P1: Spandrel Host Galaxy Bias (HIGHEST PRIORITY)}
+\textbf{Test:} Split Pantheon+/DES-SN sample by host mass, metallicity proxy, or specific star formation rate. Check for systematic bias in Hubble residuals correlated with redshift.
+
+\textbf{Timeline:} 2025 Q1--Q2
+
+\textbf{Success condition:} Bias detected, Hubble residuals shift with host properties, $\Delta(w_0, w_a) > 1\sigma$ after correction.
+
+\textbf{Failure condition:} No bias pattern, or $\Delta(w_0, w_a) < 0.5\sigma$.
+
+\textbf{Status:} Model development phase (Paper 1).
+
+\paragraph{P2: $H_0(R)$ Scale-Dependence}
+\textbf{Test:} Define local expansion rate $H_0(R)$ as a function of smoothing scale $R$ (Mpc). Compare trend to $\Lambda$CDM cosmic variance predictions from mock catalogs.
+
+\textbf{Timeline:} 2025--2026
+
+\textbf{Previous claim:} ``4.7$\sigma$ detection'' (SUSPENDED---heuristic $k$-mapping, not physically defined $R$).
+
+\textbf{Current status:} Methodology development (Paper 2).
+
+\paragraph{P3: Tensor-to-Scalar Ratio $r = 0.0048$}
+\textbf{Test:} CMB B-mode polarization detection by CMB-S4 or LiteBIRD.
+
+\textbf{Timeline:} 2029--2032
+
+\textbf{Failure condition:} $r < 0.003$ (2$\sigma$ below) or $r > 0.007$ (2$\sigma$ above).
+
+\textbf{Current limit:} $r < 0.032$ (Planck + BICEP/Keck).
+
+\paragraph{P4: CP Phase $\delta_{CP} = 67.8^\circ$}
+\textbf{Test:} Precision measurement of CKM unitarity triangle angle $\gamma$ (related to $\delta_{CP}$ via $\gamma \approx 60^\circ + \delta_{CP}$).
+
+\textbf{Current data:} LHCb 2025 reports $\gamma = 62.8^\circ \pm 2.6^\circ$, predicting $\gamma \approx 67.8^\circ$.
+
+\textbf{Tension:} 1.9$\sigma$ (marginal).
+
+\textbf{Failure threshold:} $> 3\sigma$ deviation.
+
+\textbf{Timeline:} 2025--2028 (improved LHCb/Belle II measurements).
+
+\paragraph{P5: OR Convergence in Connected Regime}
+\textbf{Test:} Modify CCF bigraph rewriting to maintain graph connectivity. Retest OR curvature convergence.
+
+\textbf{Hypothesis:} Disconnected graphs cause divergence.
+
+\textbf{Failure condition:} Divergence persists even in connected regime.
+
+\textbf{Timeline:} 2025 Q2
+
+\textbf{Status:} Under analysis (Paper 3).
+
+\section{The $\varepsilon = 1/4$ Motif: Calibration vs.\ Prediction}
+\label{sec:epsilon_motif}
+
+% 1 page: Explicit breakdown of what is calibrated vs independent
+
+\subsection{Six Claimed Appearances}
+
+The organizing principle of COSMOS is that $\varepsilon = 1/4$ appears in multiple domains:
+
+\begin{enumerate}
+  \item \textbf{Black hole entropy:} $S = A / 4$ (Bekenstein-Hawking)
+  \item \textbf{Percolation threshold:} $p_c = 1/4$ (specific lattices)
+  \item \textbf{Dark energy EOS:} $w_0 = -(1 + \varepsilon) = -5/6$
+  \item \textbf{Scalar spectral index:} $n_s = 1 - 4\varepsilon = 0.966$
+  \item \textbf{Matter clustering:} $S_8 = 2 \sqrt{\varepsilon} \approx 0.78$
+  \item \textbf{Jordan algebra:} Dimension 27 = $3^3$ connects to $F_4$ (78 generators)
+\end{enumerate}
+
+\subsection{Critical Analysis: Only 2 Are Independent}
+
+\begin{table}[h]
+\centering
+\caption{$\varepsilon = 1/4$ Appearance Classification}
+\label{tab:epsilon_classification}
+\begin{tabular}{lll}
+\toprule
+Appearance & Source & Classification \\
+\midrule
+BH entropy & Bekenstein-Hawking (1973) & \textcolor{green}{Independent} \\
+Percolation & Lattice theory (proven) & \textcolor{green}{Independent} \\
+$w_0 = -5/6$ & DESI DR2 fit & \textcolor{red}{Calibrated} \\
+$n_s = 0.966$ & Planck fit & \textcolor{red}{Calibrated} \\
+$S_8 = 0.78$ & Weak lensing fit & \textcolor{red}{Calibrated} \\
+Jordan algebra & Theoretical connection & \textcolor{blue}{Unproven} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Conclusion}
+
+The appearance of $\varepsilon = 1/4$ is an \textbf{organizing motif} used to generate hypotheses, \textbf{not} evidence of deep unification. Of six appearances, only two are genuinely independent of the cosmological data being ``explained.''
+
+This does \textbf{not} invalidate the research program---it clarifies the epistemic status of the hypotheses.
+
+\section{Individual Papers}
+\label{sec:papers}
+
+% Brief (1/2 page each) summary of the three main papers
+
+\subsection{Paper 1: Spandrel (Supernova Systematics)}
+
+\textbf{Title:} ``Does SN Ia Progenitor Evolution Mimic Evolving Dark Energy?''
+
+\textbf{Hypothesis:} DESI DR2's preference for $w_0 > -1, w_a < 0$ arises from unmodeled SN Ia population evolution correlated with host galaxy metallicity, mass, and star formation rate.
+
+\textbf{Method:} Hierarchical Bayesian model splitting SN sample by host properties. Quantify $\Delta(w_0, w_a)$ after systematic correction.
+
+\textbf{Status:} Model development (2025 Q1--Q2).
+
+\subsection{Paper 2: Scale-Dependent $H_0$}
+
+\textbf{Title:} ``Local Expansion Rate as a Function of Smoothing Scale''
+
+\textbf{Hypothesis:} Local $H_0$ varies with smoothing scale $R$ (Mpc) due to cosmic variance and/or modified gravity.
+
+\textbf{Method:} Define $H_0(R)$ estimator using multi-method distance ladder. Compare to $\Lambda$CDM mock catalogs.
+
+\textbf{Previous claim:} ``4.7$\sigma$ detection'' (SUSPENDED---heuristic $k$-mapping).
+
+\textbf{Status:} Methodology development (2025--2026).
+
+\subsection{Paper 3: CCF Ollivier-Ricci Curvature}
+
+\textbf{Title:} ``Ollivier-Ricci Curvature Under Bigraph Rewriting: Convergence Failure and Diagnostic Analysis''
+
+\textbf{Hypothesis:} OR curvature should converge to Ricci curvature in continuum limit.
+
+\textbf{Result:} \textbf{Divergence} ($\kappa_{OR} \sim -N^{0.55}$).
+
+\textbf{Diagnosis:} CCF operates outside proven convergence regime (disconnected graphs).
+
+\textbf{Status:} Failure mode analysis (2025 Q2).
+
+\section{What We Do NOT Claim}
+\label{sec:disclaimers}
+
+% Explicit enumeration of overclaims to avoid
+
+To avoid misinterpretation, we explicitly state what COSMOS does \textbf{NOT} claim:
+
+\subsection{Not Claimed: Tension Resolution}
+
+\begin{itemize}
+  \item \textbf{NOT} claiming to resolve Hubble tension ($H_0$ discrepancy between early/late universe)
+  \item \textbf{NOT} claiming to resolve $S_8$ tension (CMB vs.\ weak lensing)
+  \item \textbf{NOT} claiming to explain DESI dark energy signal (pending Spandrel test)
+\end{itemize}
+
+\subsection{Not Claimed: Emergent General Relativity}
+
+\begin{itemize}
+  \item \textbf{NOT} claiming to have demonstrated GR emergence from bigraphs
+  \item Current result: \textbf{divergence}, not convergence
+  \item This is an \textbf{open problem} requiring resolution
+\end{itemize}
+
+\subsection{Not Claimed: Statistical Significance}
+
+\begin{itemize}
+  \item Previous ``4.7$\sigma$ detection'' of scale-dependent $H_0$ is \textbf{SUSPENDED}
+  \item Heuristic $k$-mapping does not define physically interpretable scale $R$
+  \item Significance cannot be assessed without $\Lambda$CDM null comparison
+\end{itemize}
+
+\subsection{Not Claimed: Multiple Independent Confirmations}
+
+\begin{itemize}
+  \item $\varepsilon = 1/4$ appears in 6 contexts
+  \item Only 2 are independent (BH entropy, percolation)
+  \item 3 are calibrated to cosmological data (not predictions)
+  \item This is an organizing motif, not convergent evidence
+\end{itemize}
+
+\subsection{Not Claimed: Bayesian Model Preference}
+
+\begin{itemize}
+  \item \textbf{NOT} claiming ``BIC prefers COSMOS over $\Lambda$CDM''
+  \item No reproducibility package released
+  \item Previous BIC comparisons cannot be verified
+  \item Avoid model selection claims until likelihood code is public
+\end{itemize}
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+% 1 page: Invitation for critical evaluation, limitations, emphasis on falsifiability
+
+COSMOS is a \textbf{falsification program}, not a unified theory. We have enumerated:
+
+\begin{itemize}
+  \item 4 independent inputs
+  \item 4 calibrated parameters (not predictions)
+  \item 3 derived hypotheses
+  \item 5 testable predictions
+\end{itemize}
+
+\subsection{Current Scorecard}
+
+\begin{itemize}
+  \item \textbf{Falsified:} 3 hypotheses (fermion masses, OR convergence, Strong CP)
+  \item \textbf{Pending:} 5 tests (Spandrel, $H_0(R)$, $r$, $\delta_{CP}$, connected OR)
+  \item \textbf{Marginal:} 1 test ($\delta_{CP}$ at 1.9$\sigma$)
+\end{itemize}
+
+\subsection{Invitation for Critical Evaluation}
+
+We invite the community to:
+\begin{enumerate}
+  \item Test the Spandrel hypothesis on SN data (Paper 1 analysis pending)
+  \item Challenge the $H_0(R)$ methodology (Paper 2 under development)
+  \item Propose alternative explanations for OR divergence (Paper 3)
+  \item Identify additional falsification tests
+\end{enumerate}
+
+\subsection{Honest Limitations}
+
+\begin{enumerate}
+  \item Bigraph simulations operate outside proven convergence regime
+  \item $H_0(k)$ analysis used heuristic mapping; significance claims suspended
+  \item Most $\varepsilon = 1/4$ appearances are calibration targets, not independent confirmations
+  \item Spandrel model is illustrative; not yet validated on real SN data with proper selection
+\end{enumerate}
+
+\subsection{Final Statement}
+
+COSMOS prioritizes \textbf{falsifiability over confirmation}. We report failures prominently and suspend overclaims. The program stands or falls on the outcome of pending tests, particularly the Spandrel host galaxy bias analysis (2025 Q1--Q2).
+
+If you find errors, identify overclaims, or propose sharper falsification tests, we welcome your input.
+
+\section*{Acknowledgments}
+
+[To be added after individual papers are complete.]
+
+\bibliographystyle{plain}
+\bibliography{cosmos_program}
+
+% Bibliography will include:
+% - DESI Collaboration (2024, 2025)
+% - van der Hoorn et al. (2021, 2023) [OR curvature]
+% - Scolnic et al. (2022) [Pantheon+]
+% - LHCb Collaboration (2025) [gamma measurement]
+% - Planck Collaboration (2020)
+% - BICEP/Keck Collaboration
+% - Rigault et al. (2020) [SN host effects]
+
+\appendix
+
+\section{Hypothesis Dependency Matrix}
+\label{app:dependency_matrix}
+
+[Include full adjacency matrix from hypothesis\_matrix.py]
+
+\section{Complete Falsification Timeline}
+\label{app:timeline}
+
+[Include Gantt chart or timeline visualization of all tests]
+
+\section{Reproducibility}
+
+All analysis code is available at:
+\begin{verbatim}
+https://github.com/[username]/cosmos
+\end{verbatim}
+
+Hypothesis dependency analysis: \texttt{papers/umbrella-note/hypothesis\_matrix.py}
+
+Falsification program: \texttt{papers/umbrella-note/falsification\_table.py}
+
+\end{document}

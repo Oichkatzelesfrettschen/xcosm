@@ -1,0 +1,181 @@
+# Planck 2018 Cosmological Parameters
+# Source: Planck Collaboration (2020), A&A 641, A6, arXiv:1807.06209
+# Official PDG database values
+#
+# Note: Full MCMC chains (~9GB) available at:
+# https://pla.esac.esa.int/pla/#cosmology
+# File: COM_CosmoParams_fullGrid_R3.01.zip
+
+metadata:
+  source: "Planck Collaboration (2020), A&A 641, A6"
+  arxiv: "1807.06209"
+  data_release: "PR3 (2018 legacy)"
+  reference_date: "2018-07"
+  chains_available: "COM_CosmoParams_base-plikHM-TTTEEE-lowl-lowE_R3.00.zip"
+  chains_url: "https://pla.esac.esa.int/pla/#cosmology"
+
+# Base-LCDM Model Parameters (TT,TE,EE+lowE+lensing)
+base_lcdm:
+  description: "6-parameter base LCDM with one massive neutrino (0.06 eV)"
+
+  # Primary Parameters (directly sampled)
+  Omega_b_h2:
+    value: 0.02237
+    uncertainty: 0.00015
+    confidence: "68%"
+
+  Omega_c_h2:
+    value: 0.1200
+    uncertainty: 0.0012
+    confidence: "68%"
+
+  100_theta_MC:
+    value: 1.04092
+    uncertainty: 0.00031
+    confidence: "68%"
+
+  tau:
+    description: "Optical depth to reionization"
+    value: 0.0544
+    uncertainty: 0.0073
+    confidence: "68%"
+
+  ln_10_10_A_s:
+    value: 3.044
+    uncertainty: 0.014
+    confidence: "68%"
+
+  n_s:
+    description: "Scalar spectral index"
+    value: 0.9649
+    uncertainty: 0.0042
+    confidence: "68%"
+
+  # Derived Parameters
+  H0:
+    description: "Hubble constant [km/s/Mpc]"
+    value: 67.36
+    uncertainty: 0.54
+    confidence: "68%"
+
+  Omega_m:
+    description: "Total matter density parameter"
+    value: 0.3153
+    uncertainty: 0.0073
+    confidence: "68%"
+
+  Omega_Lambda:
+    description: "Dark energy density parameter"
+    value: 0.6847
+    uncertainty: 0.0073
+    confidence: "68%"
+
+  sigma_8:
+    description: "RMS matter fluctuation amplitude"
+    value: 0.8111
+    uncertainty: 0.0060
+    confidence: "68%"
+
+  S_8:
+    description: "sigma_8 * sqrt(Omega_m/0.3)"
+    value: 0.832
+    uncertainty: 0.013
+    confidence: "68%"
+
+  z_re:
+    description: "Redshift of reionization"
+    value: 7.67
+    uncertainty: 0.73
+    confidence: "68%"
+
+  Age_Gyr:
+    description: "Age of universe [Gyr]"
+    value: 13.797
+    uncertainty: 0.023
+    confidence: "68%"
+
+  r_drag:
+    description: "Sound horizon at drag epoch [Mpc]"
+    value: 147.09
+    uncertainty: 0.26
+    confidence: "68%"
+
+# Extended model constraints
+extended_models:
+  # Tensor modes (TT,TE,EE+lowE+lensing+BK15)
+  tensors:
+    r_0002:
+      description: "Tensor-to-scalar ratio at k=0.002/Mpc"
+      upper_limit_95: 0.061
+
+  # Curvature (TT,TE,EE+lowE+lensing)
+  curvature:
+    Omega_K:
+      value: 0.0007
+      plus_uncertainty: 0.0019
+      minus_uncertainty: 0.0019
+      confidence: "68%"
+
+  # Neutrino mass (TT,TE,EE+lowE+lensing+BAO)
+  neutrino:
+    sum_m_nu_eV:
+      upper_limit_95: 0.12
+
+    N_eff:
+      value: 2.99
+      uncertainty: 0.17
+      confidence: "68%"
+
+  # Dark energy equation of state (TT,TE,EE+lowE+lensing+SNe+BAO)
+  dark_energy:
+    w0:
+      value: -1.03
+      uncertainty: 0.03
+      confidence: "68%"
+
+    w0_wa:
+      w0: -0.957
+      w0_err: 0.080
+      wa: -0.29
+      wa_plus_err: 0.26
+      wa_minus_err: 0.32
+      confidence: "68%"
+
+# Tensions with other probes (as of 2018)
+tensions:
+  H0_local:
+    description: "SH0ES distance ladder"
+    external_value: 73.04
+    external_err: 1.04
+    tension_sigma: 4.4
+
+  S8_weak_lensing:
+    description: "KiDS/DES weak lensing"
+    external_value: 0.76
+    external_err: 0.02
+    tension_sigma: 2.3
+
+# CMB power spectrum scale
+angular_scales:
+  l_peak_1:
+    description: "First acoustic peak multipole"
+    value: 220
+  l_peak_2:
+    description: "Second acoustic peak multipole"
+    value: 540
+  l_peak_3:
+    description: "Third acoustic peak multipole"
+    value: 810
+
+# Physical constants adopted
+physical_constants:
+  c_km_s: 299792.458
+  G_N_SI: 6.67430e-11
+  h_bar_eV_s: 6.582119569e-16
+
+citation: |
+  Planck Collaboration, Aghanim, N., Akrami, Y., et al. 2020,
+  "Planck 2018 results. VI. Cosmological parameters",
+  Astronomy & Astrophysics, 641, A6.
+  DOI: 10.1051/0004-6361/201833910
+  arXiv: 1807.06209

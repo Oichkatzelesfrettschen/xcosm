@@ -1,0 +1,255 @@
+# JWST JADES SN 2023adsy - Type Ia Supernova at z=2.9
+# The most distant spectroscopically confirmed Type Ia supernova
+#
+# Primary Sources:
+#   - Pierel et al. (2024), ApJ Letters 971, L32, arXiv:2406.05089
+#   - Vinko & Regos (2025), A&A, arXiv:2411.10427
+#   - JADES Transient Survey: DeCoursey et al. (2025), ApJ 979, 250, arXiv:2406.05060
+#
+# Host Galaxy: JADES-GS+53.13485-27.82088
+# Spectroscopic Redshift: 2.903 +/- 0.007
+
+metadata:
+  source_primary: "arXiv:2411.10427"
+  source_discovery: "arXiv:2406.05089"
+  survey: "JADES (JWST Advanced Deep Extragalactic Survey)"
+  telescope: "JWST"
+  instruments: ["NIRCam", "NIRSpec"]
+  date_discovery: "2023"
+  date_published: "2024-06"
+
+target:
+  name: "SN 2023adsy"
+  host_galaxy: "JADES-GS+53.13485-27.82088"
+  ra_deg: 53.13485
+  dec_deg: -27.82088
+  redshift: 2.903
+  redshift_err: 0.007
+  redshift_type: "spectroscopic"
+
+classification:
+  type: "Ia"
+  subtype: "normal (with dust)"
+  confidence: "high"
+  peculiarities:
+    - "High Ca II velocity (~18000 km/s)"
+    - "Significant host dust extinction"
+    - "Rest-frame UV deficit"
+
+# SALT3-NIR Light Curve Fits (Table 1 from Vinko & Regos 2025)
+salt3_nir_fits:
+  model_A:
+    description: "Free x0, x1, c fit with dust correction"
+    x1: 2.11
+    x1_err: 0.44
+    c: 0.30
+    c_err: 0.13
+    log10_x0: -7.04
+    log10_x0_err: 0.19
+    mB: 28.20
+    mB_err: 0.48
+    MB: -18.59
+    MB_err: 0.40
+    E_B_V_host: 0.68
+    E_B_V_host_err: 0.11
+    distance_modulus: 46.79
+    distance_modulus_err: 0.22
+    chi2_dof: 1.9249
+
+  model_B:
+    description: "Fixed x0 from SED fit"
+    x1: 2.39
+    x1_err: 0.31
+    c: 0.47
+    c_err: 0.08
+    log10_x0: -7.29  # fixed
+    mB: 28.83
+    mB_err: 0.26
+    MB: -18.16
+    MB_err: 0.26
+    E_B_V_host: 0.54
+    E_B_V_host_err: 0.06
+    distance_modulus: 47.00
+    distance_modulus_err: 0.26
+    chi2_dof: 1.9543
+
+  pierel_2024:
+    description: "Original P24 fit (no dust correction)"
+    x1: -0.11
+    x1_err: 1.04
+    c: 0.92
+    c_err: 0.05
+    log10_x0: -8.15
+    log10_x0_err: 0.05
+    mB: 30.73
+    mB_err: 0.15
+    MB: -16.45
+    MB_err: 0.32
+    chi2_dof: 6.4655
+
+# BayeSN Fits (Table 2 from Vinko & Regos 2025)
+bayesn_fits:
+  M20_RV289:
+    model: "M20"
+    RV: 2.89
+    AV: 3.02
+    AV_err: 0.15
+    theta1: -0.97
+    theta1_err: 0.66
+    mu_BSN: 46.35
+    mu_BSN_err: 0.11
+    E_B_V: 1.04
+    E_B_V_err: 0.05
+    mu_corrected: 46.77
+    mu_corrected_err: 0.43
+
+  M20_RV310:
+    model: "M20"
+    RV: 3.10
+    AV: 3.08
+    AV_err: 0.15
+    theta1: -1.05
+    theta1_err: 0.66
+    mu_BSN: 46.31
+    mu_BSN_err: 0.11
+    E_B_V: 0.99
+    E_B_V_err: 0.05
+    mu_corrected: 46.73
+    mu_corrected_err: 0.43
+
+  T21_RV261:
+    model: "T21"
+    RV: 2.61
+    AV: 2.17
+    AV_err: 0.25
+    theta1: 0.33
+    theta1_err: 0.77
+    mu_BSN: 46.90
+    mu_BSN_err: 0.18
+    E_B_V: 0.83
+    E_B_V_err: 0.10
+    mu_corrected: 47.33
+    mu_corrected_err: 0.45
+
+  T21_RV310:
+    model: "T21"
+    RV: 3.10
+    AV: 2.40
+    AV_err: 0.27
+    theta1: 0.37
+    theta1_err: 0.75
+    mu_BSN: 46.66
+    mu_BSN_err: 0.19
+    E_B_V: 0.77
+    E_B_V_err: 0.09
+    mu_corrected: 47.08
+    mu_corrected_err: 0.45
+
+  W22_RV266:
+    model: "W22"
+    RV: 2.66
+    AV: 2.90
+    AV_err: 0.17
+    theta1: -0.91
+    theta1_err: 0.77
+    mu_BSN: 46.49
+    mu_BSN_err: 0.10
+    E_B_V: 1.09
+    E_B_V_err: 0.06
+    mu_corrected: 46.91
+    mu_corrected_err: 0.42
+
+  W22_RV310:
+    model: "W22"
+    RV: 3.10
+    AV: 3.04
+    AV_err: 0.17
+    theta1: -0.99
+    theta1_err: 0.76
+    mu_BSN: 46.37
+    mu_BSN_err: 0.11
+    E_B_V: 0.98
+    E_B_V_err: 0.05
+    mu_corrected: 46.79
+    mu_corrected_err: 0.43
+
+# Cosmological Comparison
+cosmology:
+  adopted_parameters:
+    H0: 70.0  # km/s/Mpc
+    Omega_M: 0.315
+    model: "flat LCDM"
+
+  lcdm_prediction:
+    distance_modulus: 46.98  # at z=2.903
+
+  standardization_pantheon:
+    MB0: -19.21
+    alpha: 0.148
+    beta: 3.09
+
+  agreement:
+    model_A_vs_LCDM_sigma: 0.9
+    model_B_vs_LCDM_sigma: 0.1
+    conclusion: "Consistent with LCDM at <1 sigma"
+
+# Ca II Velocity (peculiar property)
+spectroscopy:
+  CaII_velocity_km_s: 18000
+  CaII_velocity_err: 2000
+  comment: "High velocity compared to typical SNe Ia"
+
+# JADES Survey Context
+jades_survey:
+  area_arcmin2: 25
+  depth_ABmag: 30
+  field: "GOODS-S"
+
+  sn_ia_rate_predictions:
+    z_2_0_to_2_5:
+      single_degenerate_total: 1.444
+      single_degenerate_observable: 0.386
+      double_degenerate_total: 1.861
+      double_degenerate_observable: 0.497
+    z_2_5_to_3_0:
+      single_degenerate_total: 1.083
+      single_degenerate_observable: 0.334
+      double_degenerate_total: 1.528
+      double_degenerate_observable: 0.471
+    z_3_0_to_3_5:
+      single_degenerate_total: 0.722
+      single_degenerate_observable: 0.252
+      double_degenerate_total: 1.083
+      double_degenerate_observable: 0.378
+
+# Key Physics Results for Spandrel Framework
+spandrel_relevance:
+  high_z_stretch_test:
+    prediction: "x1 ~ 2.08 at z > 2.5"
+    observed: "x1 = 2.11-2.39"
+    agreement: "Excellent (<0.5 sigma)"
+
+  standardization:
+    result: "SNe Ia remain standardizable at z > 2"
+    peak_luminosity_evolution: "No significant evolution detected"
+
+  host_dust:
+    finding: "Significant dust correction required"
+    implication: "High-z hosts may have more dust than expected"
+
+# Citations
+citations:
+  discovery: |
+    Pierel et al. (2024), "Discovery of an Apparent Red, High-velocity
+    Type Ia Supernova at z=2.9 with JWST", ApJ Letters 971, L32.
+    arXiv:2406.05089
+
+  analysis: |
+    Vinko & Regos (2025), "SN 2023adsy - a normal Type Ia Supernova
+    at z=2.9, discovered by JWST", A&A.
+    arXiv:2411.10427
+
+  survey: |
+    DeCoursey et al. (2025), "The JADES Transient Survey: Discovery
+    and Classification of Supernovae in the JADES Deep Field",
+    ApJ 979, 250. arXiv:2406.05060

@@ -12,16 +12,16 @@ from matplotlib.gridspec import GridSpec
 import sys
 
 # Import our modules
-from cosmos.core.octonion_algebra import (
+from xcosm.core.octonion_algebra import (
     Octonion, Jordan3O, classify_j3o_components,
     FANO_LINES, test_octonion_multiplication
 )
-from cosmos.core.qcd_running import (
+from xcosm.core.qcd_running import (
     compute_mass_ratios, find_unification_scale,
     alpha_s_4loop, running_mass, print_coefficient_table,
     M_ELECTRON, M_UP_2GEV, M_DOWN_2GEV
 )
-from cosmos.core.entropic_cosmology import (
+from xcosm.core.entropic_cosmology import (
     E_z_entropic, E_z_LCDM, distance_modulus,
     generate_synthetic_pantheon, grid_search, run_mcmc_simple,
     w_entropic

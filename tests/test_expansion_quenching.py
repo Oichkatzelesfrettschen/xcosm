@@ -12,10 +12,26 @@ Date: November 28, 2025
 """
 
 import sys
-import numpy as np
 
-# Import MPS solver
-from cosmos.engines.flame_box_mps import MPSConfig, MPSSpectralSolver, DEVICE
+import numpy as np
+import pytest
+
+# Check for torch availability
+try:
+    import torch
+
+    HAS_TORCH = True
+except ImportError:
+    HAS_TORCH = False
+
+# Skip all tests if torch not available
+pytestmark = pytest.mark.skipif(not HAS_TORCH, reason="torch not installed")
+
+if HAS_TORCH:
+    from xcosm.engines.flame_box_mps import DEVICE, MPSConfig, MPSSpectralSolver
+else:
+    MPSConfig = MPSSpectralSolver = DEVICE = None
+
 
 def test_expansion_physics():
     """Test that expansion follows correct scaling laws."""
@@ -27,10 +43,7 @@ def test_expansion_physics():
 
     # Setup solver with expansion enabled
     config = MPSConfig(
-        N=64,
-        enable_expansion=True,
-        tau_expansion=0.1,  # 0.1 normalized time units
-        t_max=0.5
+        N=64, enable_expansion=True, tau_expansion=0.1, t_max=0.5  # 0.1 normalized time units
     )
 
     solver = MPSSpectralSolver(config)
@@ -45,7 +58,7 @@ def test_expansion_physics():
     rho_0 = solver.rho_background.mean().item()
     g_0 = solver.g
 
-    print(f"Initial conditions:")
+    print("Initial conditions:")
     print(f"  ρ_0 = {rho_0:.4f}")
     print(f"  g_0 = {g_0:.4f}")
     print(f"  τ_expansion = {config.tau_expansion}")
@@ -70,7 +83,7 @@ def test_expansion_physics():
             tau = config.tau_expansion
             expansion_factor = 1.0 / (1 + t / tau) ** 3
             rho_theory = rho_0 * expansion_factor
-            g_theory = g_0 * expansion_factor ** (2/3)
+            g_theory = g_0 * expansion_factor ** (2 / 3)
 
             # Burned fraction
             burned = (solver.Y_scalar < 0.5).float().mean().item()
@@ -80,8 +93,10 @@ def test_expansion_physics():
             gravities.append(g_curr)
             burned_fractions.append(burned)
 
-            print(f"{t:9.4f} | {rho_mean/rho_0:9.4f} | {expansion_factor:9.4f} | "
-                  f"{g_curr/g_0:9.4f} | {expansion_factor**(2/3):9.4f} | {burned:5.1%}")
+            print(
+                f"{t:9.4f} | {rho_mean/rho_0:9.4f} | {expansion_factor:9.4f} | "
+                f"{g_curr/g_0:9.4f} | {expansion_factor**(2/3):9.4f} | {burned:5.1%}"
+            )
 
     print()
 
@@ -92,7 +107,7 @@ def test_expansion_physics():
 
     # Expected final values
     expected_rho_ratio = 1.0 / (1 + final_t / tau) ** 3
-    expected_g_ratio = expected_rho_ratio ** (2/3)
+    expected_g_ratio = expected_rho_ratio ** (2 / 3)
 
     actual_rho_ratio = rho_means[-1] / rho_0
     actual_g_ratio = gravities[-1] / g_0
@@ -100,16 +115,17 @@ def test_expansion_physics():
     rho_error = abs(actual_rho_ratio - expected_rho_ratio) / expected_rho_ratio * 100
     g_error = abs(actual_g_ratio - expected_g_ratio) / expected_g_ratio * 100
 
-    print(f"  ρ(t)/ρ_0: expected = {expected_rho_ratio:.4f}, actual = {actual_rho_ratio:.4f}, error = {rho_error:.2f}%")
-    print(f"  g(t)/g_0: expected = {expected_g_ratio:.4f}, actual = {actual_g_ratio:.4f}, error = {g_error:.2f}%")
+    print(
+        f"  ρ(t)/ρ_0: expected = {expected_rho_ratio:.4f}, actual = {actual_rho_ratio:.4f}, error = {rho_error:.2f}%"
+    )
+    print(
+        f"  g(t)/g_0: expected = {expected_g_ratio:.4f}, actual = {actual_g_ratio:.4f}, error = {g_error:.2f}%"
+    )
 
-    if rho_error < 1.0 and g_error < 1.0:
-        print("  ✓ PASS: Scaling laws verified")
-    else:
-        print("  ✗ FAIL: Scaling laws violated")
-        return False
-
-    return True
+    # Use assertions instead of return values
+    assert rho_error < 1.0, f"Density scaling law violated: error = {rho_error:.2f}%"
+    assert g_error < 1.0, f"Gravity scaling law violated: error = {g_error:.2f}%"
+    print("  PASS: Scaling laws verified")
 
 
 def compare_with_without_expansion():
@@ -127,12 +143,7 @@ def compare_with_without_expansion():
     results = {}
 
     for enable_exp, label in [(False, "No Expansion"), (True, "With Expansion")]:
-        config = MPSConfig(
-            N=N,
-            enable_expansion=enable_exp,
-            tau_expansion=0.1,
-            t_max=1.0
-        )
+        config = MPSConfig(N=N, enable_expansion=enable_exp, tau_expansion=0.1, t_max=1.0)
 
         solver = MPSSpectralSolver(config)
 
@@ -150,11 +161,11 @@ def compare_with_without_expansion():
             flame_z_history.append(flame_z)
 
         results[label] = {
-            'final_t': solver.t,
-            'final_burned': burned_history[-1],
-            'max_burned': max(burned_history),
-            'final_flame_z': flame_z_history[-1],
-            'burned_history': burned_history
+            "final_t": solver.t,
+            "final_burned": burned_history[-1],
+            "max_burned": max(burned_history),
+            "final_flame_z": flame_z_history[-1],
+            "burned_history": burned_history,
         }
 
         print(f"{label}:")
@@ -169,8 +180,12 @@ def compare_with_without_expansion():
     # Compare
     print("Quenching Effect:")
 
-    burned_ratio = results["With Expansion"]["final_burned"] / max(results["No Expansion"]["final_burned"], 0.001)
-    flame_z_ratio = results["With Expansion"]["final_flame_z"] / max(results["No Expansion"]["final_flame_z"], 0.001)
+    burned_ratio = results["With Expansion"]["final_burned"] / max(
+        results["No Expansion"]["final_burned"], 0.001
+    )
+    flame_z_ratio = results["With Expansion"]["final_flame_z"] / max(
+        results["No Expansion"]["final_flame_z"], 0.001
+    )
 
     print(f"  Burned fraction ratio (exp/no_exp): {burned_ratio:.2f}")
     print(f"  Flame position ratio (exp/no_exp): {flame_z_ratio:.2f}")
@@ -192,10 +207,10 @@ def main():
     print()
 
     # Test 1: Verify scaling laws
-    physics_ok = test_expansion_physics()
+    test_expansion_physics()
 
-    # Test 2: Compare with/without expansion
-    results = compare_with_without_expansion()
+    # Test 2: Compare with/without expansion (optional comparison)
+    # results = compare_with_without_expansion()
 
     # Summary
     print("=" * 72)
@@ -210,10 +225,10 @@ def main():
     print("  ρ(t) = ρ_0 / (1 + t/τ_exp)³  — homologous expansion")
     print("  g(t) = g_0 × (ρ/ρ_0)^(2/3)   — reduced gravity with expansion")
     print()
-    print("Physics Verification:", "PASS ✓" if physics_ok else "FAIL ✗")
+    print("Physics Verification: PASS")
     print()
 
-    return 0 if physics_ok else 1
+    return 0
 
 
 if __name__ == "__main__":

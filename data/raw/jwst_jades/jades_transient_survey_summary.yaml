@@ -1,0 +1,98 @@
+# JADES Transient Survey Summary Statistics
+# Source: DeCoursey et al. (2025), ApJ 979, 250, arXiv:2406.05060
+#
+# First systematic supernova search to z > 2 with JWST
+
+metadata:
+  source: "arXiv:2406.05060"
+  telescope: "JWST"
+  instrument: "NIRCam"
+  survey: "JADES Deep Field"
+  field: "GOODS-S"
+  observation_baseline: "~1 year"
+  depth_ABmag: 30
+  area_arcmin2: 25
+
+# Supernova Discovery Statistics
+discoveries:
+  total_supernovae: 79
+  by_redshift:
+    z_lt_2:
+      count: 38
+      fraction: 0.481
+    z_2_to_3:
+      count: 23
+      fraction: 0.291
+    z_3_to_4:
+      count: 8
+      fraction: 0.101
+    z_4_to_5:
+      count: 7
+      fraction: 0.089
+    z_undetermined:
+      count: 3
+      fraction: 0.038
+
+  detection_rate:
+    per_arcmin2_per_year: 1.5  # ~1-2 range
+    comment: "Demonstrates JWST as powerful SN discovery machine"
+
+# Spectroscopically Confirmed High-z SNe
+spectroscopic_sample:
+  - name: "SN 2023adsy"
+    type: "Ia"
+    redshift: 2.90
+    redshift_type: "spectroscopic"
+    comment: "Most distant confirmed SN Ia"
+
+  - name: "JADES Type IIP"
+    type: "IIP"
+    redshift: 3.61
+    redshift_type: "spectroscopic"
+    comment: "Core-collapse supernova"
+
+  - name: "JADES Type Ic-BL"
+    type: "Ic-BL"
+    redshift: 2.83
+    redshift_type: "spectroscopic"
+    comment: "Broad-lined core-collapse"
+
+# Classification Capability
+classification_notes:
+  method: "Multiepoch light-curve fitting"
+  confidence: "High even at z >= 2"
+  models_used:
+    - "SALT3-NIR"
+    - "BayeSN"
+    - "Template matching"
+
+# Implications for Cosmology
+cosmology_implications:
+  high_z_standardization:
+    result: "SNe Ia standardizable out to z ~ 3"
+    peak_luminosity: "No evolution detected"
+
+  cosmic_sfr_probe:
+    capability: "Can constrain star formation rate at z > 2"
+
+  dark_energy_test:
+    capability: "Extended leverage arm for w(z) constraints"
+
+# Future Projections
+future_prospects:
+  roman_space_telescope:
+    expected_sn_ia_z_gt_2: ">100 per year"
+    timeline: "2027+"
+
+  rubin_lsst:
+    role: "Low-z calibration sample"
+    timeline: "2025+"
+
+  euclid:
+    role: "Wide-field high-z SNe"
+    timeline: "2025+"
+
+citation: |
+  DeCoursey et al. (2025), "The JADES Transient Survey: Discovery and
+  Classification of Supernovae in the JADES Deep Field",
+  ApJ 979, 250. arXiv:2406.05060

@@ -1,0 +1,225 @@
+# PDG 2024 Particle Data Summary
+# Source: Particle Data Group, Phys. Rev. D 110, 030001 (2024)
+# URL: https://pdg.lbl.gov/2024/
+#
+# Selected values relevant for COSMOS framework
+
+metadata:
+  source: "Particle Data Group 2024"
+  reference: "S. Navas et al., Phys. Rev. D 110, 030001 (2024)"
+  full_table: "mass_width_2024.txt"
+  url: "https://pdg.lbl.gov/2024/"
+
+# Gauge Bosons
+gauge_bosons:
+  photon:
+    mass_eV: 0.0
+    upper_limit_eV: 1.e-18
+    pdg_id: 22
+
+  gluon:
+    mass: 0.0  # Massless
+    pdg_id: 21
+
+  W_boson:
+    mass_GeV: 80.369
+    mass_err_GeV: 0.013
+    width_GeV: 2.08
+    width_err_GeV: 0.04
+    pdg_id: 24
+
+  Z_boson:
+    mass_GeV: 91.1880
+    mass_err_GeV: 0.0020
+    width_GeV: 2.4955
+    width_err_GeV: 0.0023
+    pdg_id: 23
+
+  Higgs:
+    mass_GeV: 125.20
+    mass_err_GeV: 0.11
+    width_MeV: 3.7
+    width_plus_err_MeV: 1.9
+    width_minus_err_MeV: 1.4
+    pdg_id: 25
+
+# Leptons
+leptons:
+  electron:
+    mass_MeV: 0.51099895
+    mass_err_MeV: 1.5e-10
+    pdg_id: 11
+    lifetime: "stable"
+
+  muon:
+    mass_MeV: 105.6583755
+    mass_err_MeV: 0.0000023
+    pdg_id: 13
+    lifetime_us: 2.1969811
+    lifetime_err_us: 0.0000022
+
+  tau:
+    mass_MeV: 1776.93
+    mass_err_MeV: 0.09
+    pdg_id: 15
+    lifetime_fs: 290.3
+    lifetime_err_fs: 0.5
+
+  # Neutrino mass differences (not individual masses)
+  neutrino_mass_squared_diff:
+    delta_m21_squared_eV2: 7.53e-5
+    delta_m21_squared_err: 0.18e-5
+    delta_m32_squared_eV2: 2.455e-3  # Normal ordering
+    delta_m32_squared_err: 0.028e-3
+    sum_upper_limit_eV: 0.12  # Cosmological
+
+# Quarks (MS-bar masses at relevant scales)
+quarks:
+  up:
+    mass_MeV_2GeV: 2.16
+    mass_plus_err: 0.07
+    mass_minus_err: 0.07
+    pdg_id: 2
+
+  down:
+    mass_MeV_2GeV: 4.70
+    mass_plus_err: 0.07
+    mass_minus_err: 0.07
+    pdg_id: 1
+
+  strange:
+    mass_MeV_2GeV: 93.5
+    mass_plus_err: 0.8
+    mass_minus_err: 0.8
+    pdg_id: 3
+
+  charm:
+    mass_GeV_mc: 1.27
+    mass_err_GeV: 0.02
+    pdg_id: 4
+
+  bottom:
+    mass_GeV_mb: 4.18
+    mass_plus_err_GeV: 0.03
+    mass_minus_err_GeV: 0.02
+    pdg_id: 5
+
+  top:
+    mass_GeV_pole: 172.57
+    mass_err_GeV: 0.29
+    pdg_id: 6
+
+# CKM Matrix Elements
+ckm_matrix:
+  # Magnitudes of CKM matrix elements
+  Vud:
+    value: 0.97367
+    uncertainty: 0.00032
+  Vus:
+    value: 0.2243
+    uncertainty: 0.0008
+  Vub:
+    value: 0.00382
+    uncertainty: 0.00020
+  Vcd:
+    value: 0.221
+    uncertainty: 0.004
+  Vcs:
+    value: 0.975
+    uncertainty: 0.006
+  Vcb:
+    value: 0.0408
+    uncertainty: 0.0014
+  Vtd:
+    value: 0.0080
+    uncertainty: 0.0003
+  Vts:
+    value: 0.0388
+    uncertainty: 0.0011
+  Vtb:
+    value: 1.013
+    uncertainty: 0.030
+
+  # Wolfenstein parameters
+  wolfenstein:
+    lambda: 0.22500
+    lambda_err: 0.00067
+    A: 0.826
+    A_err: 0.015
+    rho_bar: 0.159
+    rho_bar_err: 0.010
+    eta_bar: 0.348
+    eta_bar_err: 0.010
+
+  # Jarlskog invariant (CP violation measure)
+  J:
+    value: 3.08e-5
+    uncertainty: 0.15e-5
+
+  # CP violating phase
+  delta_CP_degrees: 65.4
+  delta_CP_err_degrees: 3.2
+
+# Coupling Constants
+coupling_constants:
+  # Fine structure constant
+  alpha_em:
+    value: 7.2973525643e-3
+    inverse: 137.035999177
+    uncertainty: 0.000000021
+
+  # Strong coupling at M_Z
+  alpha_s_MZ:
+    value: 0.1180
+    uncertainty: 0.0009
+
+  # Fermi constant
+  G_F_GeV_minus2:
+    value: 1.1663788e-5
+    uncertainty: 0.0000006e-5
+
+  # Weinberg angle
+  sin2_theta_W_MSbar:
+    value: 0.23122
+    uncertainty: 0.00003
+
+# Physical Constants
+physical_constants:
+  c_m_s: 299792458  # exact
+  hbar_eV_s: 6.582119569e-16
+  hbar_c_GeV_fm: 0.1973269804
+  G_N_m3_kg_s2: 6.67430e-11
+  G_N_err: 0.00015e-11
+  M_Planck_GeV: 1.220890e19
+  M_Planck_reduced_GeV: 2.435323e18
+
+# Muon g-2 (anomalous magnetic moment)
+muon_g2:
+  a_mu_experimental:
+    value: 116592059e-11
+    uncertainty: 22e-11
+  a_mu_SM_2020:
+    value: 116591810e-11
+    uncertainty: 43e-11
+  discrepancy_sigma: 4.2
+  notes: "Under active theoretical revision"
+
+# CCF Framework Relevance
+ccf_relevance:
+  fermion_mass_hierarchy:
+    observation: "Masses span ~6 orders of magnitude"
+    ccf_test: "Octonion-based mass formula"
+
+  ckm_angles:
+    wolfenstein_lambda: 0.225
+    ccf_prediction: "lambda ~ phi^(-1.66) corrections"
+
+  cp_violation:
+    ccf_prediction: "delta_CP = arccos(1/sqrt(7)) = 67.79 deg"
+    pdg_value: 65.4
+    tension_sigma: "<1"
+
+citation: |
+  S. Navas et al. (Particle Data Group),
+  "Review of Particle Physics",
+  Phys. Rev. D 110, 030001 (2024).

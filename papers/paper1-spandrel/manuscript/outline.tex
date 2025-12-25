@@ -1,0 +1,260 @@
+% Paper 1: Spandrel - SN Ia Population Evolution
+% Does SN Ia Progenitor Evolution Mimic Evolving Dark Energy?
+\documentclass[twocolumn,prd,showpacs,nofootinbib,superscriptaddress]{revtex4-2}
+
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{xcolor}
+
+% Draft notes
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+\newcommand{\note}[1]{\textcolor{blue}{[NOTE: #1]}}
+
+\begin{document}
+
+\title{Does SN Ia Progenitor Evolution Mimic Evolving Dark Energy?\\
+A Host-Galaxy Diagnostic for DESI's $w_0$-$w_a$ Signal}
+
+\author{COSMOS Collaboration}
+\affiliation{TBD}
+
+\date{\today}
+
+\begin{abstract}
+The DESI Year-1 results suggest evolving dark energy ($w_a \neq 0$) at
+$2.5\sigma$--$3.9\sigma$ significance when combined with Type Ia supernova
+data. We investigate whether this signal could arise from unmodeled
+SN~Ia population evolution correlated with host galaxy properties---the
+``Spandrel'' hypothesis. Using hierarchical Bayesian modeling, we test
+whether high-mass and low-mass host galaxies yield consistent dark energy
+parameters when population drift is (not) included. Under the Spandrel
+hypothesis, baseline fits should show mass-dependent apparent cosmology,
+while evolution-corrected fits should not. We present methodology and
+simulated validation; application to Pantheon+ and DES-SN5YR samples
+is ongoing. This differential diagnostic is robust to absolute calibration
+uncertainties and provides a direct falsification test for the population
+evolution scenario.
+\end{abstract}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\label{sec:intro}
+
+\todo{Opening: DESI BAO + SN evidence for $w_a \neq 0$}
+
+\todo{Problem: SN Ia standardization assumes population-invariant relations}
+
+\todo{Spandrel hypothesis: If progenitor metallicity evolves with z, and
+metallicity correlates with host mass, the host-mass split should reveal
+systematic differences in apparent cosmology.}
+
+\todo{This paper: Define the test, validate on simulations, apply to data}
+
+Key references:
+\begin{itemize}
+    \item DESI Collaboration (2024, 2025): BAO and dark energy
+    \item Scolnic et al. (2022): Pantheon+ sample
+    \item Rigault et al. (2020): Host mass correlations
+    \item Brout \& Scolnic (2021): Evolution systematics
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The Spandrel Hypothesis}
+\label{sec:hypothesis}
+
+\subsection{Physical Motivation}
+
+SN Ia progenitor properties (C/O ratio, metallicity) may evolve with
+lookback time. If this evolution affects peak luminosity beyond SALT2
+standardization:
+\begin{equation}
+    M_B(z) = M_{B,0} + \frac{dM}{dz} z + \alpha x_1 - \beta c + \gamma \cdot \text{(host mass)}
+\end{equation}
+
+\todo{Discuss metallicity-mass relation in host galaxies}
+
+\todo{Discuss progenitor delay-time distribution evolution}
+
+\subsection{The Differential Signature}
+
+If $dM/dz \neq 0$ correlates with host mass:
+\begin{itemize}
+    \item High-mass hosts: older stellar populations, higher metallicity
+    \item Low-mass hosts: younger populations, lower metallicity
+\end{itemize}
+
+The falsification test: Split sample at $\log(M_*/M_\odot) = 10$ and fit
+cosmology independently. Under Spandrel:
+\begin{align}
+    w_0^{\text{high}} &\neq w_0^{\text{low}} \quad \text{(baseline model)} \\
+    w_0^{\text{high}} &= w_0^{\text{low}} \quad \text{(evolution model)}
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Hierarchical Bayesian Model}
+\label{sec:model}
+
+\subsection{Likelihood Function}
+
+For $N$ SNe with observed magnitudes $\{m_i\}$:
+\begin{equation}
+    \ln \mathcal{L} = -\frac{1}{2} \sum_{i=1}^{N} \left[
+        \frac{(m_i - \mu_i + M_{\text{std},i})^2}{\sigma_i^2}
+        + \ln(2\pi\sigma_i^2)
+    \right]
+\end{equation}
+
+where:
+\begin{align}
+    \mu_i &= \mu(z_i; H_0, \Omega_m, w_0, w_a) \\
+    M_{\text{std},i} &= M_0 + \alpha x_{1,i} - \beta c_i + \gamma \max(\log M_* - 10, 0)
+\end{align}
+
+\subsection{Evolution Parameters}
+
+The Spandrel model adds:
+\begin{equation}
+    M_{\text{std},i} \to M_{\text{std},i} + \frac{dM}{dz} z_i
+\end{equation}
+
+\todo{Full parameter vector: $\theta = \{M_0, \alpha, \beta, \gamma, \sigma_{\text{int}}, dM/dz, H_0, \Omega_m, w_0, w_a\}$}
+
+\subsection{Priors}
+
+\todo{Table of priors for all parameters}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\toprule
+Parameter & Prior & Notes \\
+\midrule
+$M_0$ & $\mathcal{N}(-19.3, 0.5)$ & Absolute magnitude \\
+$\alpha$ & $\mathcal{N}(0.14, 0.05)$ & Stretch coefficient \\
+$\beta$ & $\mathcal{N}(3.1, 0.5)$ & Color coefficient \\
+$\gamma$ & $\mathcal{N}(0.05, 0.05)$ & Host mass step \\
+$\sigma_{\text{int}}$ & Half-$\mathcal{N}(0.1)$ & Intrinsic scatter \\
+$dM/dz$ & $\mathcal{N}(0, 0.2)$ & Evolution (Spandrel) \\
+$w_0$ & $\mathcal{U}(-2, 0)$ & DE equation of state \\
+$w_a$ & $\mathcal{N}(0, 1)$ & DE evolution \\
+\bottomrule
+\end{tabular}
+\caption{Prior distributions for model parameters.}
+\label{tab:priors}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Validation on Simulated Data}
+\label{sec:validation}
+
+\subsection{Injection-Recovery Tests}
+
+\todo{Generate simulated SN samples with known $dM/dz$}
+
+\todo{Verify baseline model shows host-mass dependent $w_0$, $w_a$}
+
+\todo{Verify evolution model recovers true cosmology}
+
+\subsection{Detection Sensitivity}
+
+\todo{Minimum $dM/dz$ detectable with Pantheon+ statistics}
+
+\todo{Expected significance vs sample size}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Application to Real Data}
+\label{sec:data}
+
+\subsection{Pantheon+ Sample}
+
+\todo{Sample selection and cuts}
+
+\todo{Host mass distribution}
+
+\subsection{Results: Host Mass Split}
+
+\todo{Table: $w_0$, $w_a$ for high/low mass subsamples}
+
+\todo{Figure: Posterior contours}
+
+\subsection{Results: Model Comparison}
+
+\todo{$\Delta$BIC between baseline and Spandrel models}
+
+\todo{Bayes factor interpretation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Implications for DESI Dark Energy Results}
+
+\todo{If Spandrel confirmed: DESI $w_a$ signal may be systematic}
+
+\todo{If Spandrel rejected: Strengthens case for true DE evolution}
+
+\subsection{Comparison to Other Systematics Tests}
+
+\todo{Relation to existing host mass step analyses}
+
+\todo{Difference: We test for z-dependent differential, not constant step}
+
+\subsection{Future Prospects}
+
+\todo{LSST, Roman: Much larger samples with better host characterization}
+
+\todo{Spectroscopic host metallicities as direct probe}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions}
+\label{sec:conclusions}
+
+\begin{enumerate}
+    \item We propose a differential diagnostic for SN Ia population evolution
+    \item The host-mass split test is robust to absolute calibration
+    \item Simulations validate the methodology
+    \item Application to Pantheon+ is [pending/complete]
+    \item Result: [Spandrel confirmed/rejected at X$\sigma$]
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Acknowledgments}
+
+\todo{Acknowledgments}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+
+\section{Distance Modulus Calculation}
+\label{app:distance}
+
+For flat $w_0$-$w_a$ cosmology:
+\begin{equation}
+    \mu(z) = 5\log_{10}\left(\frac{d_L(z)}{\text{Mpc}}\right) + 25
+\end{equation}
+
+where the luminosity distance:
+\begin{equation}
+    d_L(z) = \frac{c(1+z)}{H_0} \int_0^z \frac{dz'}{E(z')}
+\end{equation}
+
+and:
+\begin{equation}
+    E(z) = \sqrt{\Omega_m(1+z)^3 + \Omega_{\text{DE}}(1+z)^{3(1+w_0+w_a)} e^{-3w_a z/(1+z)}}
+\end{equation}
+
+\section{MCMC Implementation Details}
+\label{app:mcmc}
+
+\todo{Sampler settings: emcee, n\_walkers, n\_steps, burn-in}
+
+\todo{Convergence diagnostics: Gelman-Rubin, autocorrelation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliography{spandrel_refs}
+
+\end{document}

@@ -32,7 +32,7 @@ import numpy as np
 from typing import Dict, List, Tuple
 
 import torch
-from cosmos.engines.flame_box_mps import MPSConfig, MPSSpectralSolver, DEVICE
+from xcosm.engines.flame_box_mps import MPSConfig, MPSSpectralSolver, DEVICE
 
 # Density values to sweep (normalized units, proportional to ρ_c)
 # These scale gravity and Atwood number

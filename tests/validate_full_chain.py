@@ -22,18 +22,19 @@ Author: Spandrel Framework
 Date: November 28, 2025
 """
 
-import numpy as np
 from typing import Dict
+
+import numpy as np
 
 # Import from spandrel_cosmology (assuming same directory)
 try:
-    from cosmos.models.spandrel_cosmology import (  # noqa: F401
+    from xcosm.models.spandrel_cosmology import (  # noqa: F401
+        D_REF,
         cosmic_metallicity,
+        demonstrate_phantom_mimicry,
         fractal_dimension_validated,
         spandrel_bias_delta_mu,
-        demonstrate_phantom_mimicry,
         validate_against_desi,
-        D_REF,
     )
 
     IMPORTS_OK = True
@@ -154,9 +155,7 @@ def print_validation_report():
     print("╔" + "═" * 68 + "╗")
     print("║" + " " * 68 + "║")
     print("║" + "    SPANDREL FRAMEWORK: FINAL CHAIN VALIDATION".center(68) + "║")
-    print(
-        "║" + "    z → Z(z) → D(Z) → Δm₁₅(D) → x₁ → δμ(z) → (w₀, wₐ)".center(68) + "║"
-    )
+    print("║" + "    z → Z(z) → D(Z) → Δm₁₅(D) → x₁ → δμ(z) → (w₀, wₐ)".center(68) + "║")
     print("║" + " " * 68 + "║")
     print("╚" + "═" * 68 + "╝")
     print()
@@ -166,9 +165,7 @@ def print_validation_report():
     print("CHAIN VALIDATION AT KEY REDSHIFTS")
     print("=" * 70)
     print()
-    print(
-        f"{'z':>6} | {'Z/Z☉':>8} | {'D':>6} | {'Δm₁₅':>6} | {'x₁':>7} | {'δμ (mag)':>10}"
-    )
+    print(f"{'z':>6} | {'Z/Z☉':>8} | {'D':>6} | {'Δm₁₅':>6} | {'x₁':>7} | {'δμ (mag)':>10}")
     print("-" * 70)
 
     for z in [0.05, 0.30, 0.65, 1.00, 1.50, 2.00, 2.90]:
@@ -191,9 +188,7 @@ def print_validation_report():
 
     print("JWST SN 2023adsy (z = 2.903):")
     print(f"  x₁ predicted: {obs['jwst']['x1_predicted']:+.2f}")
-    print(
-        f"  x₁ observed:  {obs['jwst']['x1_observed']:+.2f} ± {obs['jwst']['x1_error']:.2f}"
-    )
+    print(f"  x₁ observed:  {obs['jwst']['x1_observed']:+.2f} ± {obs['jwst']['x1_error']:.2f}")
     print(f"  Tension:      {obs['jwst']['tension_sigma']:.1f}σ")
     print()
 

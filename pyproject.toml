@@ -40,6 +40,7 @@ dependencies = [
     "scipy>=1.7.0",
     "pandas>=1.3.0",
     "networkx>=2.6.0",
+    "spandrel-core @ git+https://github.com/Oichkatzelesfrettschen/spandrel-core.git",
 ]
 
 [project.optional-dependencies]

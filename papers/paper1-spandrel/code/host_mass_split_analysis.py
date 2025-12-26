@@ -25,18 +25,13 @@ from typing import Dict, List, Tuple
 import numpy as np
 from scipy import optimize
 
-# Import from local modules
-try:
-    from data_loader import SimulatedDataLoader, SNDataset, split_by_host_mass
-    from spandrel_likelihood import SpandrelLikelihood
-except ImportError:
-    # Fallback for direct execution
-    import sys
-    from pathlib import Path
-
-    sys.path.insert(0, str(Path(__file__).parent))
-    from data_loader import SimulatedDataLoader, SNDataset, split_by_host_mass
-    from spandrel_likelihood import SpandrelLikelihood
+# Import from spandrel-core shared library
+from spandrel_core import (
+    SimulatedDataLoader,
+    SNDataset,
+    split_by_host_mass,
+    SpandrelLikelihood,
+)
 
 
 @dataclass

@@ -18,35 +18,24 @@ import sys
 from typing import Tuple
 
 import numpy as np
-
-# Physical constants
-C_LIGHT = 299792.458  # km/s
-H0 = 70.0  # km/s/Mpc
-
-# DESI Year 1 results (arXiv:2404.03002)
-DESI_W0 = -0.827
-DESI_WA = -0.75
-DESI_W0_ERR = 0.063
-DESI_WA_ERR = 0.29
-LCDM_W0 = -1.0
-LCDM_WA = 0.0
-
+import matplotlib.pyplot as plt
+from scipy.integrate import quad
+try:
+    from spandrel_core.cosmology import luminosity_distance as spandrel_dl
+except ImportError:
+    spandrel_dl = None
 
 def luminosity_distance(z: float, w0: float = -1.0, wa: float = 0.0) -> float:
-    """Compute luminosity distance for w0-wa dark energy."""
-    from scipy.integrate import quad
-
-    def E(zp):
-        Omega_m = 0.3
-        Omega_de = 0.7
-        a = 1 / (1 + zp)
-        w_eff = w0 + wa * (1 - a)
-        return np.sqrt(Omega_m * (1 + zp) ** 3 + Omega_de * (1 + zp) ** (3 * (1 + w_eff)))
-
-    integral, _ = quad(lambda zp: 1 / E(zp), 0, z)
-    d_L = C_LIGHT / H0 * (1 + z) * integral
-
-    return d_L
+    """Calculates luminosity distance in Mpc for a given redshift and w0, wa."""
+    if spandrel_dl and w0 == -1.0 and wa == 0.0:
+        return spandrel_dl(z)
+    
+    # Fallback/Custom implementation for non-LCDM
+    def hubble_inv(z_prime):
+        return 1.0 / np.sqrt(0.3 * (1 + z_prime)**3 + 0.7 * np.exp(3 * (1 + w0 + wa) * np.log(1 + z_prime) - 3 * wa * (z_prime / (1 + z_prime))))
+    
+    integral, _ = quad(hubble_inv, 0, z)
+    return (1 + z) * (299792.458 / 70.0) * integral
 
 
 def distance_modulus(z: float, w0: float = -1.0, wa: float = 0.0) -> float:

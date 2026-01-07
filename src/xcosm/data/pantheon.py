@@ -10,7 +10,8 @@ Source: https://github.com/PantheonPlusSH0ES/DataRelease
 """
 
 from dataclasses import dataclass
-from typing import Optional
+from pathlib import Path
+from typing import Any, Optional
 
 import numpy as np
 
@@ -92,26 +93,41 @@ class PantheonDataset:
             Path to Pantheon data file. If None, uses default location.
         """
         if filepath is None:
-            self.filepath = get_raw_data_path() / "pantheon_data.txt"
+            self.filepath: Path = get_raw_data_path() / "pantheon_data.txt"
         else:
-            self.filepath = filepath
+            self.filepath = Path(filepath)
 
         self._loaded = False
-        self._data = None
+        self._data: Any = None
 
         # Column arrays (populated on load)
-        self.names = None
-        self.z_cmb = None
-        self.z_hel = None
-        self.z_hd = None
-        self.mu = None
-        self.mu_err = None
-        self.x1 = None
-        self.x1_err = None
-        self.c = None
-        self.c_err = None
-        self.ra = None
-        self.dec = None
+        self.names: Optional[np.ndarray] = None
+        self.z_cmb: Optional[np.ndarray] = None
+        self.z_hel: Optional[np.ndarray] = None
+        self.z_hd: Optional[np.ndarray] = None
+        self.mu: Optional[np.ndarray] = None
+        self.mu_err: Optional[np.ndarray] = None
+        self.x1: Optional[np.ndarray] = None
+        self.x1_err: Optional[np.ndarray] = None
+        self.c: Optional[np.ndarray] = None
+        self.c_err: Optional[np.ndarray] = None
+        self.ra: Optional[np.ndarray] = None
+        self.dec: Optional[np.ndarray] = None
+
+    def _require_loaded(self) -> None:
+        if not self._loaded:
+            raise RuntimeError("Dataset not loaded. Call load() first.")
+        assert self.z_cmb is not None
+        assert self.z_hel is not None
+        assert self.z_hd is not None
+        assert self.mu is not None
+        assert self.mu_err is not None
+        assert self.x1 is not None
+        assert self.x1_err is not None
+        assert self.c is not None
+        assert self.c_err is not None
+        assert self.ra is not None
+        assert self.dec is not None
 
     def load(self) -> "PantheonDataset":
         """
@@ -196,13 +212,15 @@ class PantheonDataset:
 
     def __len__(self) -> int:
         """Return number of supernovae in dataset."""
-        if not self._loaded:
+        if not self._loaded or self.z_cmb is None:
             return 0
         return len(self.z_cmb)
 
     @property
     def z(self) -> np.ndarray:
         """Alias for z_cmb (primary redshift)."""
+        self._require_loaded()
+        assert self.z_cmb is not None
         return self.z_cmb
 
     def select(
@@ -231,8 +249,10 @@ class PantheonDataset:
         PantheonSelection
             Selected subset with same interface
         """
-        if not self._loaded:
-            raise RuntimeError("Dataset not loaded. Call load() first.")
+        self._require_loaded()
+        assert self.z_cmb is not None
+        assert self.x1 is not None
+        assert self.c is not None
 
         mask = np.ones(len(self), dtype=bool)
 
@@ -299,6 +319,10 @@ class PantheonDataset:
         np.ndarray
             H0 values in km/s/Mpc
         """
+        self._require_loaded()
+        assert self.mu is not None
+        assert self.z_cmb is not None
+
         # Distance in Mpc from distance modulus
         distance_mpc = 10 ** ((self.mu - 25) / 5)
 
@@ -338,6 +362,19 @@ class PantheonSelection:
     Provides same interface as PantheonDataset but for a masked subset.
     """
 
+    names: np.ndarray
+    z_cmb: np.ndarray
+    z_hel: np.ndarray
+    z_hd: np.ndarray
+    mu: np.ndarray
+    mu_err: np.ndarray
+    x1: np.ndarray
+    x1_err: np.ndarray
+    c: np.ndarray
+    c_err: np.ndarray
+    ra: np.ndarray
+    dec: np.ndarray
+
     def __init__(self, parent: PantheonDataset, mask: np.ndarray):
         """
         Initialize selection from parent dataset and mask.
@@ -349,11 +386,25 @@ class PantheonSelection:
         mask : np.ndarray
             Boolean mask for selection
         """
+        parent._require_loaded()
         self._parent = parent
         self._mask = mask
 
         # Copy selected data
-        self.names = parent.names[mask] if parent.names is not None else None
+        assert parent.names is not None
+        assert parent.z_cmb is not None
+        assert parent.z_hel is not None
+        assert parent.z_hd is not None
+        assert parent.mu is not None
+        assert parent.mu_err is not None
+        assert parent.x1 is not None
+        assert parent.x1_err is not None
+        assert parent.c is not None
+        assert parent.c_err is not None
+        assert parent.ra is not None
+        assert parent.dec is not None
+
+        self.names = parent.names[mask]
         self.z_cmb = parent.z_cmb[mask]
         self.z_hel = parent.z_hel[mask]
         self.z_hd = parent.z_hd[mask]
@@ -372,12 +423,12 @@ class PantheonSelection:
     @property
     def z(self) -> np.ndarray:
         """Alias for z_cmb."""
-        return self.z_cmb
+        return np.asarray(self.z_cmb)
 
     def compute_h0(self) -> np.ndarray:
         """Compute H0 for selected supernovae."""
         distance_mpc = 10 ** ((self.mu - 25) / 5)
-        return SPEED_OF_LIGHT_KM_S * self.z_cmb / distance_mpc
+        return np.asarray(SPEED_OF_LIGHT_KM_S * self.z_cmb / distance_mpc)
 
     def mean_h0(self) -> tuple:
         """

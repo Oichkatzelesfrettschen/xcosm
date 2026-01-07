@@ -20,7 +20,7 @@ References:
 import json
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, List, Optional, Tuple, Union
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -363,14 +363,17 @@ class H0CovarianceAnalysis:
             "delta_bic": bic_null - bic_alt,
         }
 
-    def run_full_analysis(self, output_dir: str = "/Users/eirikr/1_Workspace/cosmos/paper/output"):
+    def run_full_analysis(self, output_dir: Optional[Union[str, Path]] = None):
         """
         Run complete analysis and generate outputs.
 
         Args:
             output_dir: Directory for saving results
         """
-        output_path = Path(output_dir)
+        from xcosm_common.paths import default_output_dir
+
+        output_path = default_output_dir() if output_dir is None else Path(output_dir)
+        output_path = output_path.expanduser().resolve()
         output_path.mkdir(parents=True, exist_ok=True)
 
         print("=" * 80)

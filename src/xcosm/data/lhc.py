@@ -52,7 +52,7 @@ class FlowMeasurement:
     @property
     def v2_total_err(self) -> float:
         """Total uncertainty (stat + sys in quadrature)."""
-        return np.sqrt(self.v2_stat_err**2 + self.v2_sys_err**2)
+        return float(np.sqrt(self.v2_stat_err**2 + self.v2_sys_err**2))
 
 
 @dataclass
@@ -112,7 +112,7 @@ class WMassMeasurement:
     @property
     def total_err(self) -> float:
         """Total uncertainty."""
-        return np.sqrt(self.stat_err**2 + self.sys_err**2)
+        return float(np.sqrt(self.stat_err**2 + self.sys_err**2))
 
 
 class CMSFlowDataset:

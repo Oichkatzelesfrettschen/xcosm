@@ -19,7 +19,7 @@ where F runs over discrete "figures" (simplices, networks)
 and S[F] is the entropic/action on each configuration.
 """
 
-from typing import Tuple
+from typing import Dict, Tuple
 
 import numpy as np
 
@@ -50,7 +50,7 @@ class DiscreteSpacetime:
         self.vertex_mass = np.ones(n_vertices)
 
         # Edge "curvature" (from deficit angles)
-        self.edge_curvature = {}
+        self.edge_curvature: Dict[Tuple[int, int], float] = {}
 
     def set_random_graph(self, p: float = 0.3, seed: int = 42):
         """Generate random Erdős-Rényi graph."""
@@ -84,8 +84,10 @@ class DiscreteSpacetime:
         # Curvature term
         for (i, j), delta in self.edge_curvature.items():
             # Area ~ degree of vertices
-            area = np.sqrt(np.sum(self.adjacency[i]) * np.sum(self.adjacency[j]))
-            action += area * delta
+            degree_i = float(np.sum(self.adjacency[i]))
+            degree_j = float(np.sum(self.adjacency[j]))
+            area = float(np.sqrt(degree_i * degree_j))
+            action += area * float(delta)
 
         action *= 1 / (8 * np.pi * G)
 
@@ -108,10 +110,10 @@ class DiscreteSpacetime:
 
         # Bekenstein-Hawking entropy: S = A/4
         # In discrete setting: S_v ∝ degree
-        entropy_sum = np.sum(np.log(degrees + 1))
+        entropy_sum = float(np.sum(np.log(degrees + 1)))
 
         # The entropic action includes ξ correction
-        action = entropy_sum * (1 - xi * np.log(self.n_vertices))
+        action = entropy_sum * (1 - xi * float(np.log(self.n_vertices)))
 
         return action
 
@@ -152,7 +154,7 @@ class PartitionFunction:
         else:
             action = 0
 
-        return np.exp(-self.beta * action)
+        return float(np.exp(-self.beta * action))
 
     def monte_carlo_Z(
         self,
@@ -177,10 +179,10 @@ class PartitionFunction:
             else:
                 action = spacetime.regge_action()
 
-            Z_samples.append(np.exp(-self.beta * action))
+            Z_samples.append(float(np.exp(-self.beta * action)))
 
-        Z_mean = np.mean(Z_samples)
-        Z_std = np.std(Z_samples) / np.sqrt(n_samples)
+        Z_mean = float(np.mean(Z_samples))
+        Z_std = float(np.std(Z_samples) / np.sqrt(n_samples))
 
         return Z_mean, Z_std
 
@@ -202,7 +204,7 @@ def continuum_partition_function(Lambda: float, G: float = 1.0, V: float = 1.0) 
         S_EH = -(Λ V)/(8πG)
     """
     S_EH = -(Lambda * V) / (8 * np.pi * G)
-    return np.exp(-S_EH)
+    return float(np.exp(-S_EH))
 
 
 def verify_continuum_limit():

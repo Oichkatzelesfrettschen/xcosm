@@ -133,6 +133,7 @@ class LISASensitivity:
         """Get sensitivity curve (loads if needed)."""
         if not self._loaded:
             self.load()
+        assert self._curve is not None
         return self._curve
 
     @property
@@ -202,6 +203,7 @@ class EinsteinTelescopeSensitivity:
         """Get sensitivity curve (loads if needed)."""
         if not self._loaded:
             self.load()
+        assert self._curve is not None
         return self._curve
 
     @property

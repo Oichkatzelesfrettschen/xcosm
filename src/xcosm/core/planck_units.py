@@ -152,7 +152,7 @@ class DimensionlessConstants:
     @property
     def log_hierarchy(self) -> float:
         """Natural log of hierarchy ratio."""
-        return np.log(self.hierarchy_ratio)
+        return float(np.log(self.hierarchy_ratio))
 
 
 # Global instance for convenient access

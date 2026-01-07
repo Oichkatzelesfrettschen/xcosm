@@ -79,6 +79,7 @@ where = ["src"]
 
 [tool.setuptools.package-data]
 xcosm = ["py.typed", "data/**/*"]
+xcosm_common = ["py.typed"]
 
 # ============================================================================
 # Tool Configuration
@@ -105,8 +106,12 @@ exclude = [
     "__pycache__",
     ".git",
     ".pytest_cache",
+    "data",
+    "docs",
     "legacy",
     "output",
+    "papers",
+    "scripts",
 ]
 
 [tool.ruff.lint]

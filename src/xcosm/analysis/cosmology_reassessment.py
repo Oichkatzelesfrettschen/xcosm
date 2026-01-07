@@ -18,22 +18,28 @@ import sys
 from typing import Tuple
 
 import numpy as np
-import matplotlib.pyplot as plt
 from scipy.integrate import quad
+
 try:
     from spandrel_core.cosmology import luminosity_distance as spandrel_dl
 except ImportError:
     spandrel_dl = None
 
+DESI_W0 = -0.83
+DESI_W0_ERR = 0.05
+DESI_WA = -0.70
+DESI_WA_ERR = 0.25
+
+
 def luminosity_distance(z: float, w0: float = -1.0, wa: float = 0.0) -> float:
     """Calculates luminosity distance in Mpc for a given redshift and w0, wa."""
     if spandrel_dl and w0 == -1.0 and wa == 0.0:
         return spandrel_dl(z)
-    
+
     # Fallback/Custom implementation for non-LCDM
     def hubble_inv(z_prime):
         return 1.0 / np.sqrt(0.3 * (1 + z_prime)**3 + 0.7 * np.exp(3 * (1 + w0 + wa) * np.log(1 + z_prime) - 3 * wa * (z_prime / (1 + z_prime))))
-    
+
     integral, _ = quad(hubble_inv, 0, z)
     return (1 + z) * (299792.458 / 70.0) * integral
 

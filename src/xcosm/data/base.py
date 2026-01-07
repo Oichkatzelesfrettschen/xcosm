@@ -6,7 +6,7 @@ Common utilities, paths, and base classes for COSMOS data access.
 """
 
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
 
@@ -89,12 +89,8 @@ class DatasetInfo:
     source: str
     description: str
     n_records: int = 0
-    columns: list = None
+    columns: list[str] = field(default_factory=list)
     citation: Optional[str] = None
-
-    def __post_init__(self):
-        if self.columns is None:
-            self.columns = []
 
 
 # Standard physical constants used in data analysis
